@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="creditMonthBoxStrokeWidth">1dp</dimen>
+    <dimen name="creditMonthBoxRadius">8dp</dimen>
+    <dimen name="creditMonthTitleRadius">500dp</dimen>
+    <dimen name="creditMonthTitlePadding">8dp</dimen>
+    <dimen name="creditMonthTitleTextSize">12sp</dimen>
+    <dimen name="creditMonthTitleLeftMargin">14dp</dimen>
+    <dimen name="creditMonthHeaderTopMargin">4dp</dimen>
+    <dimen name="creditMonthHeaderLeftMargin">16dp</dimen>
+    <dimen name="creditMonthHeaderTextSize">12sp</dimen>
+    <dimen name="creditMonthContentTopMargin">6dp</dimen>
+    <dimen name="creditMonthContentBottomPadding">15dp</dimen>
+    <dimen name="creditMonthContentTextSize">14sp</dimen>
+
+</resources>

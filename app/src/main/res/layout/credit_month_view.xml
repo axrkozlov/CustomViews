@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+>
+
+
+    <View
+            android:id="@+id/titleMiddleGuideline"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/creditMonthBoxStrokeWidth"
+
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/title"/>
+
+    <ImageView
+            android:id="@+id/outlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/credit_month_box"
+            app:layout_constraintTop_toTopOf="@id/titleMiddleGuideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1 мес"
+            android:background="@drawable/credit_month_title_background"
+            android:textColor="@color/creditMonthTitleText"
+            android:id="@+id/title"
+            android:layout_marginStart="@dimen/creditMonthTitleLeftMargin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/headerSale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/headerSales"
+            android:textSize="@dimen/creditMonthHeaderTextSize"
+            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
+            android:layout_marginStart="@dimen/creditMonthHeaderLeftMargin"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:id="@+id/headerRepayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/headerRepayment"
+            android:textSize="@dimen/creditMonthHeaderTextSize"
+            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/amountRepayment"/>
+
+    <TextView
+            android:id="@+id/headerOverRepayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/headerOverPayment"
+            android:textSize="@dimen/creditMonthHeaderTextSize"
+            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="@id/amountOverpayment"/>
+
+    <TextView
+            android:id="@+id/amountSales"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/amountSales"
+            android:textColor="@color/creditMonthContent"
+            android:textSize="@dimen/creditMonthContentTextSize"
+            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
+            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
+            app:layout_constraintTop_toBottomOf="@id/headerSale"
+            app:layout_constraintStart_toStartOf="@+id/headerSale"
+            app:layout_constraintEnd_toStartOf="@+id/amountRepayment"
+    />
+    <TextView
+            android:id="@+id/amountRepayment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/amountRepayment"
+            android:textColor="@color/creditMonthContent"
+            android:textSize="@dimen/creditMonthContentTextSize"
+            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
+            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
+            app:layout_constraintStart_toEndOf="@+id/amountSales"
+            app:layout_constraintEnd_toStartOf="@+id/amountOverpayment"
+            app:layout_constraintTop_toBottomOf="@+id/headerRepayment"/>
+    <TextView
+            android:id="@+id/amountOverpayment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/amountSales"
+            android:textColor="@color/creditMonthContent"
+            android:textSize="@dimen/creditMonthContentTextSize"
+            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
+            app:layout_constraintStart_toEndOf="@+id/amountRepayment"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
+            app:layout_constraintTop_toBottomOf="@+id/headerOverRepayment"/>
+</android.support.constraint.ConstraintLayout>

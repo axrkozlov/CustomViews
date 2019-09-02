@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">customViews</string>
+
+    <string name="title">1 мес</string>
+    <string name="headerSales">Продажи\nс Kaspi.kz</string>
+    <string name="headerRepayment">Погашение\nосн. долга</string>
+    <string name="headerOverPayment">Переплата\n </string>
+    <string name="amountSales">1209505 ₸</string>
+    <string name="amountRepayment">69012 ₸</string>
+    <string name="amountOverpayment">124500 ₸</string>
+
+
+</resources>

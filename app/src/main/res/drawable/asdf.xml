@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item>
+    <shape >
+        <solid android:color="@color/creditMonthTitleBackground"/>
+        <padding android:left="8dp" android:right="@dimen/creditMonthTitlePadding"/>
+        <corners
+                android:bottomRightRadius="@dimen/creditMonthTitleRadius"
+                android:bottomLeftRadius="@dimen/creditMonthTitleRadius"
+                android:topLeftRadius="@dimen/creditMonthTitleRadius"
+                android:topRightRadius="@dimen/creditMonthTitleRadius"/>
+
+    </shape>
+</item>
+
+</selector>
