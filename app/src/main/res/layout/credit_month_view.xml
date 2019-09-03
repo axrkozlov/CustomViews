@@ -1,108 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
->
+        android:layout_height="wrap_content">
 
 
     <View
             android:id="@+id/titleMiddleGuideline"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/creditMonthBoxStrokeWidth"
-
-            app:layout_constraintTop_toTopOf="@id/title"
-            app:layout_constraintBottom_toBottomOf="@id/title"/>
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintTop_toTopOf="@id/title" />
 
     <ImageView
             android:id="@+id/outlinedBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:src="@drawable/credit_month_box"
-            app:layout_constraintTop_toTopOf="@id/titleMiddleGuideline"
             app:layout_constraintBottom_toBottomOf="parent"
-    />
+            app:layout_constraintTop_toTopOf="@id/titleMiddleGuideline" />
 
 
     <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="1 мес"
+            android:layout_marginStart="14dp"
             android:background="@drawable/credit_month_title_background"
             android:textColor="@color/creditMonthTitleText"
-            android:id="@+id/title"
-            android:layout_marginStart="@dimen/creditMonthTitleLeftMargin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1 мес" />
+
 
     <TextView
             android:id="@+id/headerSale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:text="@string/headerSales"
-            android:textSize="@dimen/creditMonthHeaderTextSize"
-            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
-            android:layout_marginStart="@dimen/creditMonthHeaderLeftMargin"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
     <TextView
             android:id="@+id/headerRepayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/headerRepayment"
-            android:textSize="@dimen/creditMonthHeaderTextSize"
-            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/amountRepayment"/>
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/containerRepayment"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
     <TextView
-            android:id="@+id/headerOverRepayment"
+            android:id="@+id/headerOverpayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/headerOverPayment"
-            android:textSize="@dimen/creditMonthHeaderTextSize"
-            android:layout_marginTop="@dimen/creditMonthHeaderTopMargin"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="@id/amountOverpayment"/>
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/containerOverpayment"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
-    <TextView
-            android:id="@+id/amountSales"
+
+    <FrameLayout
+            android:id="@+id/containerSales"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/amountSales"
-            android:textColor="@color/creditMonthContent"
-            android:textSize="@dimen/creditMonthContentTextSize"
-            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
-            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
-            app:layout_constraintTop_toBottomOf="@id/headerSale"
-            app:layout_constraintStart_toStartOf="@+id/headerSale"
-            app:layout_constraintEnd_toStartOf="@+id/amountRepayment"
-    />
-    <TextView
-            android:id="@+id/amountRepayment"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintEnd_toStartOf="@id/containerRepayment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerSale">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/sales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/creditMonthContent"
+                    android:textSize="14sp"
+                    tools:text="1209505 ₸" />
+
+            <ImageView
+                    android:id="@+id/salesUnderline"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:src="@drawable/credit_month_underline"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@id/sales"
+                    app:layout_constraintTop_toBottomOf="@id/sales" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+            android:id="@+id/containerRepayment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/amountRepayment"
-            android:textColor="@color/creditMonthContent"
-            android:textSize="@dimen/creditMonthContentTextSize"
-            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
-            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
-            app:layout_constraintStart_toEndOf="@+id/amountSales"
-            app:layout_constraintEnd_toStartOf="@+id/amountOverpayment"
-            app:layout_constraintTop_toBottomOf="@+id/headerRepayment"/>
-    <TextView
-            android:id="@+id/amountOverpayment"
+            android:layout_marginTop="4dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintEnd_toStartOf="@id/containerOverpayment"
+            app:layout_constraintStart_toEndOf="@+id/containerSales"
+            app:layout_constraintTop_toBottomOf="@+id/headerRepayment">
+
+        <TextView
+                android:id="@+id/repayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/creditMonthContent"
+                android:textSize="14sp"
+                tools:text="690012 ₸" />
+    </FrameLayout>
+
+    <FrameLayout
+            android:id="@+id/containerOverpayment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/amountSales"
-            android:textColor="@color/creditMonthContent"
-            android:textSize="@dimen/creditMonthContentTextSize"
-            android:paddingBottom="@dimen/creditMonthContentBottomPadding"
-            app:layout_constraintStart_toEndOf="@+id/amountRepayment"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/creditMonthContentTopMargin"
-            app:layout_constraintTop_toBottomOf="@+id/headerOverRepayment"/>
-</android.support.constraint.ConstraintLayout>
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:paddingBottom="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/containerRepayment"
+            app:layout_constraintTop_toBottomOf="@+id/headerOverpayment">
+
+        <TextView
+                android:id="@+id/overpayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/creditMonthContent"
+                android:textSize="14sp"
+                android:maxLines="1"
+                tools:text="124500 ₸" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

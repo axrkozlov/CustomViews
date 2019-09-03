@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="creditMonthBoxStrokeWidth">1dp</dimen>
-    <dimen name="creditMonthBoxRadius">8dp</dimen>
-    <dimen name="creditMonthTitleRadius">500dp</dimen>
-    <dimen name="creditMonthTitlePadding">8dp</dimen>
-    <dimen name="creditMonthTitleTextSize">12sp</dimen>
-    <dimen name="creditMonthTitleLeftMargin">14dp</dimen>
-    <dimen name="creditMonthHeaderTopMargin">4dp</dimen>
-    <dimen name="creditMonthHeaderLeftMargin">16dp</dimen>
-    <dimen name="creditMonthHeaderTextSize">12sp</dimen>
-    <dimen name="creditMonthContentTopMargin">6dp</dimen>
-    <dimen name="creditMonthContentBottomPadding">15dp</dimen>
-    <dimen name="creditMonthContentTextSize">14sp</dimen>
+<!--    <dimen name="creditMonthBoxStrokeWidth">1dp</dimen>-->
+<!--    <dimen name="creditMonthBoxRadius">8dp</dimen>-->
+<!--    <dimen name="creditMonthTitleRadius">500dp</dimen>-->
+<!--    <dimen name="creditMonthTitlePadding">8dp</dimen>-->
+<!--    <dimen name="creditMonthTitleTextSize">12sp</dimen>-->
+<!--    <dimen name="creditMonthTitleStartMargin">14dp</dimen>-->
+<!--    <dimen name="creditMonthHeaderTopMargin">4dp</dimen>-->
+<!--    <dimen name="creditMonthHeaderStartMargin">16dp</dimen>-->
+<!--    <dimen name="creditMonthHeaderTextSize">12sp</dimen>-->
+<!--    <dimen name="creditMonthContentTopMargin">6dp</dimen>-->
+<!--    <dimen name="creditMonthContentStartMargin">16dp</dimen>-->
+<!--    <dimen name="creditMonthContentEndMargin">16dp</dimen>-->
+<!--    <dimen name="creditMonthContentBottomPadding">15dp</dimen>-->
+<!--    <dimen name="creditMonthContentTextSize">14sp</dimen>-->
+<!--    <dimen name="creditMonthContentTextUnderlineWidth">1dp</dimen>-->
+<!--    <dimen name="creditMonthContentTextUnderlineDashWidth">5dp</dimen>-->
+<!--    <dimen name="creditMonthContentTextUnderlineDashGap">1dp</dimen>-->
+
 
 </resources>
