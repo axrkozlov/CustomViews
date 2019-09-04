@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         creditMonthView.setOnClickListener {
 
             creditMonthView.salesViewActive=!creditMonthView.salesViewActive
-            creditMonthView.titleViewActive=!creditMonthView.titleViewActive
+//            creditMonthView.titleViewActive=!creditMonthView.titleViewActive
+            creditMonthView.titleViewHidden=!creditMonthView.titleViewHidden
         }
 
         textView=findViewById(R.id.text)
@@ -39,7 +40,17 @@ class MainActivity : AppCompatActivity() {
         content.setSpan(PathOverSpan(resources.displayMetrics.density),0,udata.length, Spanned.SPAN_MARK_MARK)
         textView.setText(content)
         Log.i("MainActivity", "onCreate (line 35): ${textView.width}")
+
+
+        val  creditAmountView=findViewById<CreditAmountView>(R.id.creditAmount)
+
+        creditAmountView.min=500_000
+
+        creditAmountView.max=99_000_000
+
     }
+
+
 
 
 

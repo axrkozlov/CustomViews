@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TextAppearanceStyles -->
+    <!--https://material.google.com/style/typography.html#typography-styles-->
+    <style name="TextAppearance.Material.Kaspi.Display1" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+
+    <style name="TextAppearance.Material.Kaspi.Headline" parent="TextAppearance.AppCompat.Headline"><!--24sp-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/open_sans_light</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Headline.Bill">
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Headline.Inverse">
+        <item name="android:textColor">@color/textColorPrimaryInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Title" parent="TextAppearance.AppCompat.Title"><!--20dp-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/open_sans_light</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading" parent="TextAppearance.AppCompat.Subhead"><!--16sp-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Red">
+        <item name="android:textColor">@color/kaspi_red</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Blue">
+        <item name="android:textColor">@color/cerulean</item>
+    </style>
+
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Bonus">
+        <item name="android:textColor">@color/bonusTextColor</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Inverse"><!--16sp-->
+        <item name="android:textColor">@color/textColorPrimaryInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Hint">
+        <item name="android:textColor">@color/textColorHint</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Subheading.Link">
+        <item name="android:textColor">@color/textColorLink</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Body2" parent="TextAppearance.AppCompat.Body2"><!--14sp-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Body2.Inverse">
+        <item name="android:textColor">@color/textColorPrimaryInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Body1" parent="TextAppearance.AppCompat.Body1"><!--14sp-->
+        <item name="android:textColor">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Body1.Primary" parent="TextAppearance.Material.Kaspi.Body1"><!--14sp-->
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption" parent="TextAppearance.AppCompat.Caption"><!--12sp-->
+        <item name="android:textColor">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Caps" parent="TextAppearance.AppCompat.Caption"><!--12sp-->
+        <item name="android:textColor">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Small" parent="TextAppearance.Material.Kaspi.Caption"><!--10sp-->
+        <item name="android:textColor">@color/textColorHint</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Green"><!--12sp-->
+        <item name="android:textColor">@color/bonusTextColor</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Red">
+        <item name="android:textColor">@color/kaspi_red</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Grey">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Primary">
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Low">
+        <item name="android:textColor">@color/textColorHint</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Caption.Black">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+
+
+    <style name="TextAppearance.Material.Kaspi.Button.Red" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/kaspi_red</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="TextAppearance.Material.Kaspi.Button.Action" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/kaspi_red</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+    <style name="MessengerMessageBody">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/kaspi_greyish</item>
+    </style>
+
+    <style name="Headline1Style">
+        <item name="android:textSize">96sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline2StyleBold">
+        <item name="android:textSize">60sp</item>
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline2Style">
+        <item name="android:textSize">60sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline3Style">
+        <item name="android:textSize">48sp</item>
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline4Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline4Green">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Headline5Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Headline5StyleUnellipsized">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline5White">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Headline6Green">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Headline6Gray">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#de000000</item>
+    </style>
+
+    <style name="Headline6Red">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#f14635</item>
+    </style>
+
+    <style name="Headline6Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Headline7Style">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+
+    <style name="Headline6MediumStyle">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="Subtitle1White">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Subtitle1Style">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Subtitle1StyleBold">
+        <item name="android:fontFamily">@font/sans_serif_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Headline6">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#de000000</item>
+    </style>
+
+    <style name="Subtitle1Link">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#0089d0</item>
+    </style>
+
+    <style name="Subtitle1Red">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#f14635</item>
+    </style>
+
+    <style name="Subtitle1Green">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Subtitle1Gray">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="Subtitle1Blue">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/kaspi_base_blue</item>
+    </style>
+
+    <style name="Sans16">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#de000000</item>
+    </style>
+
+    <style name="Body1Red">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#f14635</item>
+    </style>
+
+    <style name="Body1GrayTextfieldDisabled">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">12sp</item>
+        <item name="android:textColor">#61000000</item>
+    </style>
+
+    <style name="Body1Green">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Body1Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Body1White">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">12sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Body1Gray">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">12sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="PhoneTempText">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="SumGreen">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Subtitle2GrayBotnav">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="Subtitle2Green">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+    <style name="Subtitle2Link">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#0089d0</item>
+    </style>
+
+    <style name="Subtitle2">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Subtitle2Red">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#f14635</item>
+    </style>
+
+    <style name="Subtitle2Style">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="ButtonWhite">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+
+    </style>
+
+    <style name="Subtitle2RedBotnav">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#f14536</item>
+    </style>
+
+    <style name="Subtitle2Gray">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="ButtonGray">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:fontFamily">@font/sans_serif_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Body2Red">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#f14536</item>
+    </style>
+
+    <style name="Body2White">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="Body2Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Body3Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Body4Style">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColorBlack</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="HintStyle">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/textColorLink</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Body2Gray">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="Body1Link">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#0089d0</item>
+    </style>
+
+    <style name="Body2Link">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#0089d0</item>
+    </style>
+
+    <style name="Body3Link">
+        <item name="android:fontFamily">@font/sans_serif_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/textColorLink</item>
+    </style>
+
+    <style name="DataPickerCaptionWhite">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CaptionStyle">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="CaptionWhite">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CaptionWhiteNarrow">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CaptionLink">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#0089d0</item>
+    </style>
+
+    <style name="SmallBlackWhite">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="CaptionGreen">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#58a000</item>
+    </style>
+
+
+
+    <style name="DataPickerCaptionBlack">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="DataPickerCaptionGray">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="CaptionBlack">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="DataPickerCaptionRed">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#f14536</item>
+    </style>
+
+    <style name="CaptionRed">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#f14635</item>
+    </style>
+
+    <style name="CaptionBody">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#99000000</item>
+    </style>
+
+    <style name="OverlineStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="OverlineWhite">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+</resources>

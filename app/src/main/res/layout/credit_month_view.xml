@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
 
     <View
-            android:id="@+id/titleMiddleGuideline"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            app:layout_constraintBottom_toBottomOf="@id/title"
-            app:layout_constraintTop_toTopOf="@id/title" />
+        android:id="@+id/titleMiddleGuideline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/title" />
 
     <ImageView
-            android:id="@+id/outlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:src="@drawable/credit_month_box"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@id/titleMiddleGuideline" />
+        android:id="@+id/outlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+        android:src="@drawable/material_outlined_box2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleMiddleGuideline" />
 
 
     <TextView
             android:id="@+id/title"
+            style="@style/CaptionBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:background="@drawable/credit_month_title_background"
-            android:textColor="@color/creditMonthTitleText"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/material_outlined_box2_title_bg"
+            app:layout_constraintStart_toStartOf="@+id/outlinedBox"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1 мес" />
 
 
     <TextView
             android:id="@+id/headerSale"
+            style="@style/Headline7Style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
             android:text="@string/headerSales"
             android:textSize="12sp"
@@ -46,31 +49,31 @@
             app:layout_constraintTop_toBottomOf="@id/title" />
 
     <TextView
-            android:id="@+id/headerRepayment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/headerRepayment"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/containerRepayment"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+        android:id="@+id/headerRepayment"
+        style="@style/Headline7Style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/headerRepayment"
+        app:layout_constraintStart_toStartOf="@id/containerRepayment"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
     <TextView
-            android:id="@+id/headerOverpayment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/headerOverPayment"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/containerOverpayment"
-            app:layout_constraintTop_toBottomOf="@id/title" />
+        android:id="@+id/headerOverpayment"
+        style="@style/Headline7Style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/headerOverPayment"
+        app:layout_constraintStart_toStartOf="@id/containerOverpayment"
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
 
     <FrameLayout
             android:id="@+id/containerSales"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
             android:paddingBottom="12dp"
             app:layout_constraintEnd_toStartOf="@id/containerRepayment"
@@ -84,18 +87,16 @@
 
             <TextView
                     android:id="@+id/sales"
+                    style="@style/Body3Style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:textColor="@color/creditMonthContent"
-                    android:textSize="14sp"
                     tools:text="1209505 ₸" />
 
             <ImageView
                     android:id="@+id/salesUnderline"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:src="@drawable/credit_month_underline"
+                    android:src="@drawable/link_dashed_underline"
                     android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="@id/sales"
                     app:layout_constraintTop_toBottomOf="@id/sales" />
@@ -105,23 +106,21 @@
     </FrameLayout>
 
     <FrameLayout
-            android:id="@+id/containerRepayment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:paddingBottom="12dp"
-            app:layout_constraintEnd_toStartOf="@id/containerOverpayment"
-            app:layout_constraintStart_toEndOf="@+id/containerSales"
-            app:layout_constraintTop_toBottomOf="@+id/headerRepayment">
+        android:id="@+id/containerRepayment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintEnd_toStartOf="@id/containerOverpayment"
+        app:layout_constraintStart_toEndOf="@+id/containerSales"
+        app:layout_constraintTop_toBottomOf="@+id/headerRepayment">
 
         <TextView
-                android:id="@+id/repayment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:textColor="@color/creditMonthContent"
-                android:textSize="14sp"
-                tools:text="690012 ₸" />
+            android:id="@+id/repayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Body3Style"
+            tools:text="690012 ₸" />
     </FrameLayout>
 
     <FrameLayout
@@ -129,20 +128,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:paddingBottom="12dp"
+            android:layout_marginEnd="24dp"
             android:orientation="vertical"
+            android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/containerRepayment"
             app:layout_constraintTop_toBottomOf="@+id/headerOverpayment">
 
         <TextView
                 android:id="@+id/overpayment"
+                style="@style/Body3Style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/creditMonthContent"
-                android:textSize="14sp"
-                android:maxLines="1"
                 tools:text="124500 ₸" />
     </FrameLayout>
 

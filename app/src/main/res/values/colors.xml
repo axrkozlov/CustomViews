@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
 
     <color name="creditMonthBoxStroke">#1e000000</color>
     <color name="creditMonthTitleBackground">#e0e0e0</color>
@@ -14,7 +12,151 @@
 
 
 
+    <color name="greyish_brown_opacity_145">#51000000</color>
+    <color name="greyish_brown_opacity_175">#af4a4a4a</color>
 
+    <color name="black_alpha">#64000000</color>
+
+    <color name="black">#3b3b3b</color>
+    <color name="greyish_brown">#4a4a4a</color>
+    <color name="grey">#a8a8a8</color>
+    <color name="grey_divider">#e7a8a8a8</color>
+    <color name="white_smoke">#f0f0f0</color>
+    <color name="white">#ffffff</color>
+    <color name="almost_white">#f2f2f2</color>
+
+    <color name="tomato">#f14536</color>
+
+    <color name="kiwiGreen">#a2da5a</color>
+    <color name="newGray">#757575</color>
+
+
+    <color name="cerulean">#0089d0</color>
+
+    <color name="divider_dark_grey">#313131</color>
+    <color name="colorDisabled">#9b9b9b</color>
+    <color name="colorBtnBg">#e6e6e6</color>
+
+    <!-- QR Scanner -->
+    <color name="viewfinder_border">@color/tomato</color>
+
+    <!-- Code generation bacground view colors -->
+    <color name="bg_green">@color/kiwiGreen</color>
+    <color name="bg_middle">#ff8f45</color>
+    <color name="bg_red">@color/tomato</color>
+
+    <!-- Code generation progress colors -->
+    <color name="progress_green">#58a000</color>
+    <color name="progress_middle">#F8690A</color>
+    <color name="progress_red">#95160a</color>
+
+    <color name="transparent_black">#e11a1a1a</color>
+
+    <color name="radio_button_selected_color">@color/cerulean</color>
+    <color name="radio_button_unselected_color">@color/tomato</color>
+
+    <color name="colorBackgroundDisabled">@color/kaspi_disable_white</color>
+
+    <color name="transparent">#0effffff</color>
+
+
+    <color name="kaspi_above_black">#1a1a1a</color>
+    <color name="kaspi_background_white">#f2f2f2</color>
+    <color name="kaspi_background_white_o80">#ccf2f2f2</color>
+    <color name="kaspi_base_blue">#59a2be</color>
+    <color name="kaspi_base_bonus_green">#58a000</color>
+    <color name="kaspi_base_green">#67bf74</color>
+    <color name="kaspi_base_indigo">#2093cd</color>
+    <color name="kaspi_base_orange">#f58559</color>
+    <color name="kaspi_base_pink">#f16364</color>
+    <color name="kaspi_base_violet">#ad62a7</color>
+    <color name="kaspi_base_yellow">#e4c62e</color>
+    <color name="kaspi_black">#000</color>
+    <color name="kaspi_black_grey">#333333</color>
+    <color name="kaspi_black_grey_o50">#80333333</color>
+    <color name="kaspi_black_light">#262626</color>
+    <color name="kaspi_black_o25">#40000000</color>
+    <color name="kaspi_black_o90">#d9000000</color>
+    <color name="kaspi_blue_800">#1565c0</color>
+    <color name="kaspi_blue_link">#0089d0</color>
+    <color name="kaspi_brick">#b73528</color>
+    <color name="kaspi_disable_white">#f9f9f9</color>
+    <color name="kaspi_grey">#999</color>
+    <color name="kaspi_grey_100">#f5f5f5</color>
+    <color name="kaspi_grey_50">#fafafa</color>
+    <color name="kaspi_grey_500">#9e9e9e</color>
+    <color name="kaspi_grey_666">#666666</color>
+    <color name="kaspi_grey_70">#3b3b3b</color>
+    <color name="kaspi_grey_900">#212121</color>
+    <color name="kaspi_grey_background">#dcdcdc</color>
+    <color name="kaspi_grey_navigation_menu_title">#bcbcbc</color>
+    <color name="kaspi_grey_warm">#9b9b9b</color>
+    <color name="kaspi_greyish">#4a4a4a</color>
+    <color name="kaspi_greyish_brown">#4d4d4d</color>
+    <color name="kaspi_light_blue_700">#0288d1</color>
+    <color name="kaspi_light_green_400">#9ccc65</color>
+    <color name="kaspi_light_grey">#e6e6e6</color>
+    <color name="kaspi_ligth_black_o90">#e5191919</color>
+    <color name="kaspi_messages_default_background">#fff7f5</color>
+    <color name="kaspi_red">#f14635</color>
+    <color name="kaspi_red_800">#c62828</color>
+    <color name="kaspi_warm_grey">#808080</color>
+    <color name="kaspi_white">#ffffff</color>
+    <color name="kaspi_white_2">#fcfcfc</color>
+    <color name="kaspi_white_greyish">#dbdbdb</color>
+    <color name="kaspi_white_o40">#66ffffff</color>
+    <color name="kaspi_white_o60">#99ffffff</color>
+    <color name="kaspi_white_o90">#e6ffffff</color>
+    <color name="kaspi_white_smoke">#f0f0f0</color>
+    <color name="kaspi_active_green">#a2da5a</color>
+    <color name="kaspi_grey_55">#e0e0e0</color>
+    <color name="kaspi_white_blue">#8cd5f1</color>
+
+
+    <color name="bonusTextColor">@color/kaspi_base_bonus_green</color>
+
+    <color name="colorAccent">@color/kaspi_white</color>
+    <color name="colorControlActivated">@color/kaspi_red_800</color>
+    <color name="colorControlNormal">@color/kaspi_red</color>
+    <color name="colorForeground">@color/kaspi_white</color>
+    <color name="colorForegroundInverse">@color/kaspi_background_white_o80</color>
+    <color name="colorPrimary">@color/kaspi_white</color>
+    <color name="colorPrimaryDark">@color/kaspi_black_o25</color>
+
+
+    <color name="textColorHeadline">@color/kaspi_black</color>
+    <color name="textColorHint">@color/kaspi_grey_500</color>
+    <color name="textColorHintInverse">@color/kaspi_white_o40</color>
+    <color name="textColorBlack">@color/kaspi_black</color>
+    <color name="textColorLink">@color/kaspi_blue_link</color>
+    <color name="textColorPrimary">@color/kaspi_black_grey</color>
+    <color name="textColorPrimaryDisabled">@color/kaspi_greyish</color>
+    <color name="textColorPrimaryInverse">@color/kaspi_white</color>
+    <color name="textColorSecondary">@color/kaspi_grey_500</color>
+    <color name="textColorSecondaryInverse">@color/kaspi_white_o90</color>
+    <color name="textColorTertiary">@color/kaspi_black_grey_o50</color>
+    <color name="textColorTertiaryInverse">@color/kaspi_white_o60</color>
+    <color name="windowBackground">@color/kaspi_background_white</color>
+
+    <color name="newColorPrimary">@color/colorPrimary</color>
+    <color name="newColorPrimaryDark">@color/colorPrimaryDark</color>
+    <color name="newColorAccent">@color/cerulean</color>
+
+    <color name="arrest_black">#de000000</color>
+    <color name="textColorSubtitle1Gray">#99000000</color>
+    <color name="iconColorGray">#8A000000</color>
+    <color name="disabledBackgroundColor">#0f000000</color>
+    <color name="linearGreen">#7ed321</color>
+    <color name="black_12opacity">#1e000000</color>
+
+    <color name="outlinedBoxTitleActive">@color/kaspi_active_green</color>
+    <color name="outlinedBoxStroke">@color/kaspi_grey_55</color>
+    <color name="seekbarBackground">@color/kaspi_white_blue</color>
+    <color name="seekbarProgress">@color/cerulean</color>
+    <!--    <color name="boxStroke">#1e000000</color>-->
+
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#51000000</color>
 
 
 </resources>

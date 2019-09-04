@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 
 
 class CreditMonthView @JvmOverloads constructor(
@@ -14,7 +15,6 @@ class CreditMonthView @JvmOverloads constructor(
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyleAttr) {
-
 
 
     val titleTextView:TextView
@@ -26,7 +26,7 @@ class CreditMonthView @JvmOverloads constructor(
     init {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null)
 
-        val v = inflate(context,R.layout.credit_month_view, this)
+        val v = inflate(context, R.layout.credit_month_view, this)
 
         titleTextView=v.findViewById(R.id.title)
         salesTextView=v.findViewById(R.id.sales)
@@ -40,11 +40,11 @@ class CreditMonthView @JvmOverloads constructor(
             field=value
             if (value) {
                 salesUnderlineImageView.visibility= View.VISIBLE
-                salesTextView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContentActive))
+                TextViewCompat.setTextAppearance(salesTextView, R.style.Body3Link)
             }
             else {
                 salesUnderlineImageView.visibility= View.INVISIBLE
-                salesTextView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContent))
+                TextViewCompat.setTextAppearance(salesTextView, R.style.Body3Style)
             }
 
         }
@@ -55,7 +55,16 @@ class CreditMonthView @JvmOverloads constructor(
             titleTextView.isActivated=field
         }
 
-
+    var titleViewHidden=false
+        set(value) {
+            field=value
+            if (value) {
+                titleTextView.visibility= View.INVISIBLE
+            }
+            else {
+                titleTextView.visibility= View.VISIBLE
+            }
+        }
 }
 
 ////    @StyleableRes
