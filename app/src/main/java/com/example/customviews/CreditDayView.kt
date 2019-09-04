@@ -2,6 +2,7 @@ package com.example.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 
 
-class CreditMonthView @JvmOverloads constructor(
+class CreditDayView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -17,34 +18,39 @@ class CreditMonthView @JvmOverloads constructor(
 
 
 
-    val titleTextView:TextView
-    val salesTextView:TextView
-    val repaymentTextView:TextView
-    val overpaymentTextView:TextView
-    val salesUnderlineImageView:ImageView
+    val titleView:TextView
+    val salesView:TextView
+    val repaymentView:TextView
+    val overpaymentView:TextView
+    private val salesUnderlineView:ImageView
+
+
+
+
+
 
     init {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null)
 
         val v = inflate(context,R.layout.credit_month_view, this)
 
-        titleTextView=v.findViewById(R.id.title)
-        salesTextView=v.findViewById(R.id.sales)
-        repaymentTextView=v.findViewById(R.id.repayment)
-        overpaymentTextView=v.findViewById(R.id.overpayment)
-        salesUnderlineImageView=v.findViewById(R.id.salesUnderline)
+        titleView=v.findViewById(R.id.title)
+        salesView=v.findViewById(R.id.sales)
+        repaymentView=v.findViewById(R.id.repayment)
+        overpaymentView=v.findViewById(R.id.overpayment)
+        salesUnderlineView=v.findViewById(R.id.salesUnderline)
     }
 
     var salesViewActive=false
         set(value) {
             field=value
             if (value) {
-                salesUnderlineImageView.visibility= View.VISIBLE
-                salesTextView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContentActive))
+                salesUnderlineView.visibility= View.VISIBLE
+                salesView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContentActive))
             }
             else {
-                salesUnderlineImageView.visibility= View.INVISIBLE
-                salesTextView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContent))
+                salesUnderlineView.visibility= View.INVISIBLE
+                salesView.setTextColor(ContextCompat.getColor(context, R.color.creditMonthContent))
             }
 
         }
@@ -52,7 +58,7 @@ class CreditMonthView @JvmOverloads constructor(
     var titleViewActive=false
         set(value) {
             field=value
-            titleTextView.isActivated=field
+            titleView.isActivated=field
         }
 
 

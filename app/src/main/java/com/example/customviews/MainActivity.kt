@@ -2,22 +2,25 @@ package com.example.customviews
 
 
 import android.os.Bundle
-import android.view.View
+import android.text.SpannableString
+import android.text.Spanned
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var textView:TextView
+    lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val creditMonthView = findViewById<CreditMonthView>(R.id.creditRow)
-        creditMonthView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-        creditMonthView.titleView.text="1 мес"
-        creditMonthView.salesView.text="500"
-        creditMonthView.repaymentView.text="600"
-        creditMonthView.overpaymentView.text="700"
+//        creditMonthView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        creditMonthView.titleTextView.text="1 мес"
+        creditMonthView.salesTextView.text="500"
+        creditMonthView.repaymentTextView.text="600"
+        creditMonthView.overpaymentTextView.text="700"
         creditMonthView.setOnClickListener {
 
             creditMonthView.salesViewActive=!creditMonthView.salesViewActive
