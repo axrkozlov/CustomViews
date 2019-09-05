@@ -44,9 +44,11 @@ class MainActivity : AppCompatActivity() {
 
         val  creditAmountView=findViewById<CreditAmountView>(R.id.creditAmount)
 
-        creditAmountView.min=500_000
+        creditAmountView.min="-50а ₸"
 
-        creditAmountView.max=99_000_000
+        creditAmountView.max="99_000_000"
+
+//        creditAmountView.amount="  500 000"
 
     }
 

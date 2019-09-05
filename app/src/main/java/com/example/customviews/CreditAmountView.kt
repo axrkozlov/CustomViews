@@ -1,21 +1,19 @@
 package com.example.customviews
 
+import android.animation.ValueAnimator
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
-import android.view.KeyEvent
-import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 import android.graphics.PorterDuff
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.animation.AccelerateDecelerateInterpolator
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.core.content.ContextCompat
 
 
@@ -25,107 +23,150 @@ class CreditAmountView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
-    private var isUpdaterFromSeekBar = false
-//    sealed class UpdatedFrom {
-//         EditText:UpdatedFrom(),
-//         SeekBar:UpdatedFrom()
-//    }
-//
+    private var isUpdatedFromSeekBar = false
+    private var isUpdatedFromSeekBarAnimator = false
+    private var isUpdatedFromEditText = false
+    private val seekBarMax=1000
 
-    val amountEditText: TextInputEditText
-    val seekBar: SeekBar
-    var min: Long = 0
+    var min = ""
         set(value) {
             field = value
-            if (value < 0) field = 0
-            minTextView.text = field.toString()
-            updateAmountEditText(min)
+            minLong = parseNumber(value)
+            minTextView.text = field
         }
-    var max: Long = 0
+
+
+    var max = ""
         set(value) {
             field = value
-            if (value < 0) field = 0
-            maxTextView.text = field.toString()
+            maxLong = parseNumber(value)
+            maxTextView.text = field
         }
-    var amount: Long = 0
+
+    var amount = ""
+        set(value) {
+            field = value
+            amountLong = parseNumber(value)
+            amountEditText.setText(amountLong.toString())
+        }
+
+
+    private var minLong: Long = 0
+        private set(value) {
+            field = value
+            if (value < 0) field = 0
+            updateAmountEditText((minLong+maxLong)/2)
+        }
+    private var maxLong: Long = 0
+        private set(value) {
+            field = value
+            if (value < 0) field = 0
+            updateAmountEditText((minLong+maxLong)/2)
+        }
+
+    var amountLong: Long = 0
         set(value) {
             field = checkedAmount(value)
+            updateAmountEditText(field)
             updateSeekBar(value)
         }
 
-    private fun updateAmountEditText(value: Long) {
-        amountEditText.setText(value.toString())
-        isUpdaterFromSeekBar = true
-    }
+    private val amountEditText: TextInputEditText
+    private val seekBar: SeekBar
+    var animator:ValueAnimator?=null
 
-    private fun updateSeekBar(value: Long) {
-        val onePercent = (max - min) / 100.toDouble()
-        val percents = (value - min) * 100 / (max - min)
-        Log.i("updateSeekBar", "$onePercent $percents")
-        seekBar.progress = percents.toInt()
-
-    }
-
-    val minTextView: TextView
-    val maxTextView: TextView
+    private val minTextView: TextView
+    private val maxTextView: TextView
 
     init {
         val v = inflate(context, R.layout.credit_amount_view, this)
-
         amountEditText =
             (v.findViewById(R.id.inputLayout) as ViewGroup).findViewById(R.id.creditAmount)
         minTextView = v.findViewById(R.id.min)
         maxTextView = v.findViewById(R.id.max)
-//        amountEditText.requestFocus()
-
-        amountEditText.setOnEditorActionListener { textView: TextView?, i: Int, _: KeyEvent? ->
-            if (i == EditorInfo.IME_ACTION_DONE) {
-                updateAmount(textView?.text ?: "")
-            }
-            false
-        }
-
         seekBar = v.findViewById(R.id.seekBar)
+        setupComponents()
+    }
+
+    private fun setupComponents() {
+        seekBar.max=seekBarMax
+//        seekBar.progress=seekBarMax/2
+        seekBar.thumb.setColorFilter(
+            ContextCompat.getColor(context, R.color.textColorLink),
+            PorterDuff.Mode.SRC_IN
+        )
+
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStopTrackingTouch(p0: SeekBar?) {
-                isUpdaterFromSeekBar = false
+                isUpdatedFromSeekBar = false
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
-                isUpdaterFromSeekBar = true
+                isUpdatedFromSeekBar = true
             }
 
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                if (!isUpdaterFromSeekBar) return
+                amountEditText.requestFocus()
+                if (!isUpdatedFromSeekBar) return
                 updateValueFromSeekbar(p1)
             }
 
         })
 
+        amountEditText.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {}
 
-//        seekBar.progressDrawable.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.MULTIPLY)
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
-        seekBar.thumb.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.SRC_IN)
-//        seekBar.setBackgroundColor(ContextCompat.getColor(context,R.color.textColorLink))
-//        seekBar.thumb.clearColorFilter()
-//        seekBar.thumb.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.MULTIPLY)
-    }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (isUpdatedFromSeekBar) return
+                isUpdatedFromEditText=true
+                amountLong=parseNumber(p0.toString())
+            }
 
-    private fun updateAmount(text: CharSequence) {
-        if (text.isEmpty()) return
-        amount = text.toString().toLong()
+        })
     }
 
     fun updateValueFromSeekbar(percent: Int) {
-        val newValue = (max - min) * percent / 100 + min
+        val newValue = (maxLong - minLong) * percent / seekBarMax + minLong
         updateAmountEditText(newValue)
+    }
+    private fun parseNumber(value: String): Long {
+        val stringWithOnlyDigits = value.filter { it.isDigit() }
+        if (stringWithOnlyDigits.isEmpty()) return 0
+        return stringWithOnlyDigits.toLong()
+    }
 
+    private fun updateAmountEditText(value: Long) {
+        if (isUpdatedFromEditText) {
+            isUpdatedFromEditText=false
+            return
+        }
+        amountEditText.setText(value.toString())
+    }
+
+    private fun updateSeekBar(value: Long) {
+        val percentVal = (value - minLong) * seekBarMax / (maxLong - minLong)
+        updateAnimatedSeekBarValue(percentVal.toInt())
+    }
+
+    private fun updateAnimatedSeekBarValue(value: Int) {
+        animator=ValueAnimator.ofInt(seekBar.progress,value)
+        animator?.run{
+            cancel()
+            duration=500
+            interpolator=AccelerateDecelerateInterpolator()
+            addUpdateListener {
+                seekBar.progress=it.animatedValue as Int
+            }
+            start()
+        }
     }
 
     private fun checkedAmount(value: Long) =
         when {
-            value < min -> min
-            value > max -> max
+            value < minLong -> minLong
+            value > maxLong -> maxLong
             else -> value
         }
 
@@ -133,6 +174,10 @@ class CreditAmountView @JvmOverloads constructor(
 }
 
 
+//private fun updateAmount(text: CharSequence) {
+//    if (text.isEmpty()) return
+//    amountLong = text.toString().toLong()
+//}
 //    var salesViewActive=false
 //        set(value) {
 //            field=value
@@ -166,11 +211,11 @@ class CreditAmountView @JvmOverloads constructor(
 //}
 
 ////    @StyleableRes
-//////    int index0 = 0;
+//////    Long index0 = 0;
 //////    @StyleableRes
-//////    int index1 = 1;
+//////    Long index1 = 1;
 //////    @StyleableRes
-//////    int index2 = 2
+//////    Long index2 = 2
 ////
 ////    var sales:String? = null
 ////    set(value) {
@@ -195,62 +240,62 @@ class CreditAmountView @JvmOverloads constructor(
 ////            val text=field// ?:""
 ////            overpaymentTextView.text=text
 ////        }
-//class ColorUnderlineSpan(private val underlineColor: Int) : UnderlineSpan() {
+//class ColorUnderlineSpan(private val underlineColor: Long) : UnderlineSpan() {
 //
 //
 //
-//    override fun updateDrawState(ds: TextPaint) {
+//    override fun updateDrawState(ds: TextPaLong) {
 //        super.updateDrawState(ds)
 //        ds.color = underlineColor
 //    }
 //
-//    override fun getSpanTypeId(): Int {
+//    override fun getSpanTypeId(): Long {
 //        return super.getSpanTypeId()
 //    }
 //}
 //
-//class DashedUnderlineSpan(color:Int, private val spannedText: String) : ReplacementSpan(){
+//class DashedUnderlineSpan(color:Long, private val spannedText: String) : ReplacementSpan(){
 //
-//    private val paint=Paint()
+//    private val paLong=PaLong()
 //
 //    private var isLengthIsCached=false
 //    private var spanLength:Float=0f
 //    init {
-//        paint.color = Color.GREEN
-////        paint.style=Paint.Style.STROKE
-//        paint.style=Paint.Style.FILL
-//        paint.pathEffect=DashPathEffect(floatArrayOf(4f, 1f), 0f)
-//        paint.strokeWidth=1f
+//        paLong.color = Color.GREEN
+////        paLong.style=PaLong.Style.STROKE
+//        paLong.style=PaLong.Style.FILL
+//        paLong.pathEffect=DashPathEffect(floatArrayOf(4f, 1f), 0f)
+//        paLong.strokeWidth=1f
 //    }
 //
 //    override fun getSize(
-//        paint: Paint,
+//        paLong: PaLong,
 //        text: CharSequence?,
-//        start: Int,
-//        end: Int,
-//        fm: Paint.FontMetricsInt?
-//    ): Int {
+//        start: Long,
+//        end: Long,
+//        fm: PaLong.FontMetricsLong?
+//    ): Long {
 //
-//        return (ceil(paint.measureText(text, start, end)).toInt())
+//        return (ceil(paLong.measureText(text, start, end)).toLong())
 //    }
 //
 //    override fun draw(
 //        canvas: Canvas,
 //        text: CharSequence,
-//        start: Int,
-//        end: Int,
+//        start: Long,
+//        end: Long,
 //        x: Float,
-//        top: Int,
-//        y: Int,
-//        bottom: Int,
-//        paint: Paint
+//        top: Long,
+//        y: Long,
+//        bottom: Long,
+//        paLong: PaLong
 //    ) {
 //        Log.i("ADSF",text.toString())
-//        canvas.drawText(text, start, end, x, y.toFloat(), paint)
-////        val paint1=Paint()
-////        canvas.drawLine(0f,0f,500f,500f,paint1)
+//        canvas.drawText(text, start, end, x, y.toFloat(), paLong)
+////        val paLong1=PaLong()
+////        canvas.drawLine(0f,0f,500f,500f,paLong1)
 ////        if (!isLengthIsCached)
-////             spanLength = paint.measureText(spannedText)
+////             spanLength = paLong.measureText(spannedText)
 ////
 ////        // https://code.google.com/p/android/issues/detail?id=29944
 ////        // canvas.drawLine can't draw dashes when hardware acceleration is enabled,
@@ -258,7 +303,7 @@ class CreditAmountView @JvmOverloads constructor(
 ////        val path = Path()
 ////        path.moveTo(x, y + 0f)
 ////        path.lineTo(x + spanLength, y + 0f)
-////        canvas.drawPath(path, paint)
+////        canvas.drawPath(path, paLong)
 //    }
 
 //}
