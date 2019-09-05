@@ -7,6 +7,7 @@ import android.text.Spanned
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,10 +18,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val creditMonthView = findViewById<CreditMonthView>(R.id.creditRow)
 //        creditMonthView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-        creditMonthView.titleTextView.text="1 мес"
-        creditMonthView.salesTextView.text="500"
-        creditMonthView.repaymentTextView.text="600"
-        creditMonthView.overpaymentTextView.text="700"
+        creditMonthView.title="1 мес"
+        creditMonthView.sales="500"
+        creditMonthView.repayment="600"
+        creditMonthView.overpayment="700"
+
+
+
         creditMonthView.setOnClickListener {
 
             creditMonthView.salesViewActive=!creditMonthView.salesViewActive
@@ -29,7 +33,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         textView=findViewById(R.id.text)
-
+        creditDayRow.title="1 мес"
+        creditDayRow.sales="500"
+        creditDayRow.repayment="600"
+        creditDayRow.overpayment="700"
 //        val text = SpannableString("Voglio sottolineare solo questa parola")
 
     Log.i("MainActivity", "onCreate (line 30): ")
@@ -42,11 +49,13 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity", "onCreate (line 35): ${textView.width}")
 
 
-        val  creditAmountView=findViewById<CreditAmountView>(R.id.creditAmount)
+        val  creditAmountView=findViewById<CreditAmountView>(R.id.creditAmountET)
 
         creditAmountView.min="-50а ₸"
 
         creditAmountView.max="99_000_000"
+
+        creditAmountView.step="1000ggg"
 
 //        creditAmountView.amount="  500 000"
 

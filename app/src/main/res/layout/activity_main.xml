@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/creditRow" />
     <com.example.customviews.CreditAmountView
-            android:id="@+id/creditAmount"
+            android:id="@+id/creditAmountET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/creditDayRow"
@@ -37,7 +37,7 @@
             android:textSize="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditAmount" />
+            app:layout_constraintTop_toBottomOf="@+id/creditAmountET" />
     <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="0dp"

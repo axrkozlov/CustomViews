@@ -11,15 +11,8 @@
     <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/textColorLink</item>
         <item name="boxStrokeWidth">2dp</item>
-<!--        <item name="hintTextAppearance">@style/hintAppearance1</item>-->
-<!--        <item name="android:textColor">@color/textColorLink</item>-->
-    </style>
-<!--    <style name="hintAppearance" parent="TextAppearance.Design.Hint">-->
-<!--        <item name="android:textColor">@color/textColorLink</item>-->
-<!--    </style>-->
 
-    <style name="seekbar" parent="Widget.AppCompat.SeekBar">
-        <item name="android:tint">@color/textColorLink</item>
     </style>
+
 
 </resources>
