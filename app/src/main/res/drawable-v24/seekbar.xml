@@ -3,17 +3,18 @@
 
     <item android:id="@android:id/background">
         <shape android:shape="line"  >
-            <stroke android:width="4dp"
+            <stroke android:width="2dp"
                     android:color="@color/seekbarBackground" />
         </shape>
 
     </item>
     <item android:id="@android:id/progress" >
         <clip>
-            <shape android:shape="line"  >
-                <stroke android:width="4dp"
+            <shape android:shape="line" android:innerRadius="2dp" >
+                <stroke android:width="3dp"
                         android:color="@color/seekbarProgress" />
             </shape>
+
         </clip>
     </item>
 <!--    <item android:id="@android:id/background" android:height="4dp" >-->

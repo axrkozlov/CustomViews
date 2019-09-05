@@ -13,6 +13,10 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
+import android.graphics.PorterDuff
+
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.content.ContextCompat
 
 
 class CreditAmountView @JvmOverloads constructor(
@@ -99,6 +103,12 @@ class CreditAmountView @JvmOverloads constructor(
         })
 
 
+//        seekBar.progressDrawable.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.MULTIPLY)
+
+        seekBar.thumb.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.SRC_IN)
+//        seekBar.setBackgroundColor(ContextCompat.getColor(context,R.color.textColorLink))
+//        seekBar.thumb.clearColorFilter()
+//        seekBar.thumb.setColorFilter(ContextCompat.getColor(context,R.color.textColorLink), PorterDuff.Mode.MULTIPLY)
     }
 
     private fun updateAmount(text: CharSequence) {
