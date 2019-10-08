@@ -8,11 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/textColorLink</item>
+    <style name="CreditInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/creditViewInputLayout</item>
         <item name="boxStrokeWidth">2dp</item>
 
     </style>
+    <style name="CreditInputLayoutErrorStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/creditViewInputLayoutError</item>
+        <item name="boxStrokeWidth">2dp</item>
 
+    </style>
 
 </resources>

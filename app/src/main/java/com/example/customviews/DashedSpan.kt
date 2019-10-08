@@ -39,7 +39,7 @@
 //        mPaint = Paint()
 //        mPaint.color = Color.GREEN
 //        mPaint.style = Paint.Style.STROKE
-//        mPaint.strokeWidth=10f
+//        mPaint.progressStrokeWidth=10f
 //        val effects = DashPathEffect(floatArrayOf(14f, 12f, 14f, 12f), 5f)
 //        mPaint.pathEffect=effects
 //    }

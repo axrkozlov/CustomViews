@@ -500,7 +500,13 @@
 
     <style name="HintStyle">
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textColor">@color/textColorLink</item>
+        <item name="android:textColor">@color/creditViewInputLayout</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="HintErrorStyle">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/creditViewInputLayoutError</item>
         <item name="android:textSize">12sp</item>
     </style>
 

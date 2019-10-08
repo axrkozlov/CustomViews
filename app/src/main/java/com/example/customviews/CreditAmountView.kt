@@ -8,12 +8,16 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import android.graphics.PorterDuff
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.credit_amount_view.view.*
-
+import timber.log.Timber
+import java.lang.NumberFormatException
 
 
 class CreditAmountView @JvmOverloads constructor(
@@ -22,11 +26,13 @@ class CreditAmountView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
-    val creditAmountET:TextInputEditText by lazy { inputLayout.creditAmountET }
+    val creditAmountET: TextInputEditText by lazy { inputLayout.creditAmountET }
+    var creditAmountChangeCallback: ((Long) -> Unit)? = null
 
     private var isUpdatedFromSeekBar = false
     private var isUpdatedFromEditText = false
-    var seekBarMaxPercent : Int = 1000
+    private var hasError=false
+    var seekBarMaxPercent: Int = 1000
 
 
     var min = ""
@@ -42,6 +48,7 @@ class CreditAmountView @JvmOverloads constructor(
             field = value
             maxLong = parseNumber(value)
             maxTV.text = field
+            setSeekBarToMiddle()
         }
 
     var amount = ""
@@ -61,35 +68,51 @@ class CreditAmountView @JvmOverloads constructor(
         private set(value) {
             field = value
             if (value < 0) field = 0
-            adjustSeekBar()
+
         }
     private var maxLong: Long = 0
         private set(value) {
             field = value
             if (value < 0) field = 0
-            adjustSeekBar()
         }
 
     private var amountLong: Long = 0
         set(value) {
-            if (field == value) return
             field = checkedAmount(value)
+            creditAmountChangeCallback?.invoke(field)
             if (!isUpdatedFromEditText) updatecreditAmountET(field)
             if (!isUpdatedFromSeekBar) updateSeekBar(value)
         }
 
-    private var stepLong:Long=1L
-    set(value) {
-        if (value<=0L) field=1L
-        field=value
-        adjustSeekBar()
-    }
+    private var stepLong: Long = 1L
+        set(value) {
+            if (value <= 0L) field = 1L
+            field = value
+            setSeekBarToMiddle()
+        }
 
 
     private var animator: ValueAnimator? = null
 
     init {
         inflate(context, R.layout.credit_amount_view, this)
+        val attrs = context.theme.obtainStyledAttributes(
+            attributeSet,
+            R.styleable.CreditAmountView,
+            0, 0
+        )
+        if (attrs.hasValue(R.styleable.CreditAmountView_min)) {
+            min = attrs.getString(R.styleable.CreditAmountView_min) ?: ""
+        }
+        if (attrs.hasValue(R.styleable.CreditAmountView_max)) {
+            max = attrs.getString(R.styleable.CreditAmountView_max) ?: ""
+        }
+        if (attrs.hasValue(R.styleable.CreditAmountView_amount)) {
+            amount = attrs.getString(R.styleable.CreditAmountView_amount) ?: ""
+        }
+        if (attrs.hasValue(R.styleable.CreditAmountView_seekStep)) {
+            step = attrs.getString(R.styleable.CreditAmountView_seekStep) ?: ""
+        }
         setupComponents()
     }
 
@@ -99,6 +122,7 @@ class CreditAmountView @JvmOverloads constructor(
             ContextCompat.getColor(context, R.color.textColorLink),
             PorterDuff.Mode.SRC_IN
         )
+
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStopTrackingTouch(p0: SeekBar?) {
@@ -124,7 +148,7 @@ class CreditAmountView @JvmOverloads constructor(
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 if (isUpdatedFromSeekBar) return
-                isUpdatedFromEditText=true
+                isUpdatedFromEditText = true
                 updateValueFromEditText(p0.toString())
             }
 
@@ -139,17 +163,25 @@ class CreditAmountView @JvmOverloads constructor(
 
     fun updateValueFromEditText(value: String) {
         amountLong = parseNumber(value)
-        isUpdatedFromEditText=false
+        isUpdatedFromEditText = false
     }
 
     private fun parseNumber(value: String): Long {
         val stringWithOnlyDigits = value.filter { it.isDigit() }
         if (stringWithOnlyDigits.isEmpty()) return 0
-        return stringWithOnlyDigits.toLong()
+
+        return try {
+            stringWithOnlyDigits.toLong()
+        } catch (e: NumberFormatException) {
+            Timber.e("parseNumber, value: $value")
+            maxLong
+        }
     }
 
-    private fun adjustSeekBar(){
-        amountLong=(minLong + maxLong) / 2 / stepLong * stepLong
+    private fun setSeekBarToMiddle() {
+        if (amount.isNotEmpty()) return
+        if (minLong==maxLong) return
+        amountLong = (minLong + maxLong) / 2 / stepLong * stepLong
     }
 
     private fun updatecreditAmountET(value: Long) {
@@ -161,14 +193,16 @@ class CreditAmountView @JvmOverloads constructor(
     }
 
     private fun updateSeekBar(value: Long) {
-        var percentVal = (value - minLong) * seekBarMaxPercent / (maxLong - minLong)
-        updateAnimatedSeekBarValue(percentVal.toInt())
+        var percentVal: Int = ((value - minLong) * seekBarMaxPercent / (maxLong - minLong)).toInt()
+        if (percentVal > seekBarMaxPercent) percentVal = seekBarMaxPercent
+        if (percentVal < 0) return
+        updateAnimatedSeekBarValue(percentVal)
     }
 
     private fun updateAnimatedSeekBarValue(value: Int) {
+        animator?.cancel()
         animator = ValueAnimator.ofInt(seekBar.progress, value)
         animator?.run {
-            cancel()
             duration = 500
             interpolator = AccelerateDecelerateInterpolator()
             addUpdateListener {
@@ -179,12 +213,46 @@ class CreditAmountView @JvmOverloads constructor(
     }
 
     private fun checkedAmount(value: Long): Long {
-        val newValue = value / stepLong * stepLong
-        return when {
-            newValue < minLong -> minLong
-            newValue > maxLong -> maxLong
-            else -> newValue
+         when {
+            value < minLong -> {
+                showError()
+                return  minLong
+            }
+            value > maxLong -> {
+                showError()
+                return  maxLong
+            }
+            else -> {
+                hideError()
+                var newValue=value / stepLong * stepLong
+                if (newValue<minLong) newValue=minLong
+                if (newValue>maxLong) newValue=maxLong
+                return newValue
+
+
+            }
         }
+    }
+
+    private fun showError() {
+        if (hasError) return
+        inputLayout.boxStrokeColor =
+            ContextCompat.getColor(context, R.color.creditViewInputLayoutError)
+        inputLayout.setHintTextAppearance(R.style.HintErrorStyle)
+        Toast.makeText(
+            context,
+            context.getString(R.string.creditAmountError, min, max),
+            Toast.LENGTH_LONG
+        ).show()
+        hasError=true
+//        if (creditAmountET.text!=null && creditAmountET.text.toString().isNotEmpty()) inputLayout.hint=context.getString(R.string.titleCreditAmount).plus(context.getString(R.string.titleCreditAmountUnavailable))
+    }
+
+    private fun hideError() {
+        inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.creditViewInputLayout)
+        inputLayout.setHintTextAppearance(R.style.HintStyle)
+        hasError=false
+//        inputLayout.hint=context.getString(R.string.titleCreditAmount)
     }
 
 

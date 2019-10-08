@@ -153,8 +153,8 @@
     <color name="outlinedBoxStroke">@color/kaspi_grey_55</color>
     <color name="seekbarBackground">@color/kaspi_white_blue</color>
     <color name="seekbarProgress">@color/cerulean</color>
-    <!--    <color name="boxStroke">#1e000000</color>-->
-
+    <color name="creditViewInputLayout">@color/kaspi_blue_link</color>
+    <color name="creditViewInputLayoutError">@color/tomato</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#51000000</color>
 

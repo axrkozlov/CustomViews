@@ -37,7 +37,23 @@ class CreditDayView @JvmOverloads constructor(
     init {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         inflate(context, R.layout.credit_day_view, this)
-
+        val attrs = context.theme.obtainStyledAttributes(
+            attributeSet,
+            R.styleable.CreditDayView,
+            0, 0
+        )
+        if (attrs.hasValue(R.styleable.CreditDayView_title)) {
+            title = attrs.getString(R.styleable.CreditDayView_title)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditDayView_sales)) {
+            sales = attrs.getString(R.styleable.CreditDayView_sales)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditDayView_repayment)) {
+            repayment = attrs.getString(R.styleable.CreditDayView_repayment)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditDayView_overpayment)) {
+            overpayment = attrs.getString(R.styleable.CreditDayView_overpayment)?:""
+        }
     }
 
 }

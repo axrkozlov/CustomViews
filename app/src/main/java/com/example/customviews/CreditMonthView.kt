@@ -69,9 +69,24 @@ class CreditMonthView @JvmOverloads constructor(
 
     init {
         setLayerType(View.LAYER_TYPE_SOFTWARE, null)
-
         inflate(context, R.layout.credit_month_view, this)
-
+        val attrs = context.theme.obtainStyledAttributes(
+            attributeSet,
+            R.styleable.CreditMonthView,
+            0, 0
+        )
+        if (attrs.hasValue(R.styleable.CreditMonthView_title)) {
+            title = attrs.getString(R.styleable.CreditMonthView_title)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditMonthView_sales)) {
+            sales = attrs.getString(R.styleable.CreditMonthView_sales)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditMonthView_repayment)) {
+            repayment = attrs.getString(R.styleable.CreditMonthView_repayment)?:""
+        }
+        if (attrs.hasValue(R.styleable.CreditMonthView_overpayment)) {
+            overpayment = attrs.getString(R.styleable.CreditMonthView_overpayment)?:""
+        }
     }
 
 

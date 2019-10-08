@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="title" format="string"/>
+    <attr name="sales" format="string"/>
+    <attr name="repayment" format="string"/>
+    <attr name="overpayment" format="string"/>
+
+
     <declare-styleable name="CreditMonthView">
+
+        <attr name="title" />
+        <attr name="sales" />
+        <attr name="repayment" />
+        <attr name="overpayment" />
     </declare-styleable>
+
+    <declare-styleable name="CreditDayView" >
+        <attr name="title" />
+        <attr name="sales" />
+        <attr name="repayment" />
+        <attr name="overpayment" />
+
+    </declare-styleable>
+    <declare-styleable name="CreditAmountView">
+        <attr name="min" format="string"/>
+        <attr name="max" format="string"/>
+        <attr name="amount" format="string"/>
+        <attr name="seekStep" format="string"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressView">
+        <attr name="progress" format="float"/>
+        <attr name="progressColor" format="integer"/>
+        <attr name="progressBackgroundColor" format="integer"/>
+        <attr name="progressStrokeWidth" format="dimension"/>
+        <attr name="roundedEnds" format="boolean"/>
+    </declare-styleable>
+
 
 </resources>

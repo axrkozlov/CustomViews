@@ -9,7 +9,7 @@
     <string name="amountRepayment">69012 ₸</string>
     <string name="amountOverpayment">124500 ₸</string>
     <string name="titleCreditAmount">Сумма кредита</string>
-
-
-
+    <!--    <string name="titleCreditAmountUnavailable">(введенное значение недоступно)</string>-->
+    <string name="creditAmountError">Значение не верно, введите сумму в пределах %s - %s</string>
+    <string name="groupDividerItemDecorationTag">com.example.customviews.inGroupFooter</string>
 </resources>
