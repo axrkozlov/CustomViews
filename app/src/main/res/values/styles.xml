@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -19,4 +19,18 @@
 
     </style>
 
+    <style name="AuthTheme.BlueOptionsMenuTheme" parent="AuthTheme">
+        <item name="actionMenuTextAppearance">@style/BlueOptionsMenuTextAppearance</item>
+        <item name="actionMenuTextColor">@color/kaspi_blue_link</item>
+    </style>
+
+    <style name="AuthTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/newColorPrimaryDark</item>
+        <item name="colorAccent">@color/newColorAccent</item>
+        <item name="colorControlHighlight">@color/white_smoke</item>
+
+        <item name="android:windowBackground">@color/white</item>
+
+    </style>
 </resources>

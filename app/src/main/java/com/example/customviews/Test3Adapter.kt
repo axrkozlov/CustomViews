@@ -1,5 +1,6 @@
 package com.example.customviews
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class Test3Adapter : RecyclerView.Adapter<Test3Adapter.Test3ViewHolder>() {
         if (position % 3 == 0)
             holder.view.setTag(R.string.groupDividerItemDecorationTag, true)
         else holder.view.setTag(R.string.groupDividerItemDecorationTag, false)
+        Log.i("TAG", "$position")
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

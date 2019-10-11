@@ -23,6 +23,8 @@ RecyclerView.ItemDecoration() {
 
     private val mBounds = Rect()
 
+
+
     init {
         val a = context.obtainStyledAttributes(ATTRS)
         mDivider = a.getDrawable(0)
