@@ -62,12 +62,12 @@ class Main4Activity : AppCompatActivity() {
 
         Log.i("TAG", "$elevation")
 
-        var translation=3f * percentage.pow(0.5f)//+7f* percentage.pow(10f)
-        if (percentage>0.8) translation=4-4*percentage.pow(2f)
+        var translation=6f * percentage.pow(0.5f)//+7f* percentage.pow(10f)
+        if (percentage>0.8) translation=6-6*percentage.pow(2f)
         toolbar.translationZ = translation
 
 
-        mainAppbar.translationZ = 15f * percentage.pow(10f)
+        mainAppbar.translationZ = 8f * percentage.pow(20f)
     }
     //without line
 //    private fun handleToolbarTitleVisibility(percentage: Float) {
