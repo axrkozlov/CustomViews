@@ -158,5 +158,9 @@
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#51000000</color>
 
-
+<color name="colorStart">#2E2C2B</color>
+    <color name="colorMiddle1">#E2DACDCA</color>
+    <color name="colorMiddle2">#D7242120</color>
+    <color name="colorMiddle3">#D7242120</color>
+    <color name="colorEnd">#00FFFFFF</color>
 </resources>

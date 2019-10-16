@@ -5,14 +5,19 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main3.*
 import android.animation.ObjectAnimator
 import android.animation.StateListAnimator
+import android.animation.ValueAnimator
 import android.os.Build
 
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
 import android.view.animation.AlphaAnimation
 
 import com.google.android.material.appbar.AppBarLayout
 
 import android.view.animation.AnimationUtils.loadAnimation
+import android.view.animation.DecelerateInterpolator
+import android.widget.SeekBar
 
 
 class Main3Activity : AppCompatActivity() {
@@ -29,6 +34,14 @@ class Main3Activity : AppCompatActivity() {
         }
         adapter.updateItems(items)
         mainAppbar.setLiftable(false)
+
+
+
+        initialSeekBar()
+
+
+
+
 
 //        mainAppbar.bringToFront()
 //        mainAppbar.elevation=0.1f
@@ -56,6 +69,28 @@ class Main3Activity : AppCompatActivity() {
 //        mainAppbar.setLiftOnScroll(true)
     }
 
+    private fun initialSeekBar() {
+        seekBar.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                changeTextColor(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+        })
+    }
+
+    fun changeTextColor(progress:Int){
+        val p=progress
+        animtext.changeColor(progress)
+    }
+
 
     private val PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.6f
     private val PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR = 0.6f
@@ -69,14 +104,16 @@ class Main3Activity : AppCompatActivity() {
 
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
             if (!mIsTheTitleVisible) {
-                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
+//                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
+                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
                 mIsTheTitleVisible = true
             }
 
         } else if (percentage <= PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR) {
 
             if (mIsTheTitleVisible) {
-                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
+//                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
+                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
                 mIsTheTitleVisible = false
             }
         }
@@ -120,4 +157,35 @@ class Main3Activity : AppCompatActivity() {
         v.visibility=visibility
     }
 
+    fun startAlpha1Animation(v: AnimatedText, duration: Long, visibility: Int) {
+
+val start=if (visibility == View.VISIBLE) 0 else 1000
+        val end=if (visibility == View.INVISIBLE) 0 else 1000
+        val animator=ValueAnimator.ofInt(start,end)
+        animator.duration=800
+        animator.interpolator=AccelerateInterpolator(0.5f)
+        animator.addUpdateListener {
+            v.changeColor(it.animatedValue as Int)
+        }
+        animator.start()
+
+
+
+//        val alphaAnimation = if (visibility == View.VISIBLE)
+//            AlphaAnimation(0f, 1f)
+//        else
+//            AlphaAnimation(1f, 0f)
+//
+//        alphaAnimation.duration = duration
+//        alphaAnimation.fillAfter = true
+//        v.startAnimation(alphaAnimation)
+//
+//        val aniSlide = if (visibility == View.VISIBLE)
+//            loadAnimation(applicationContext, R.anim.slide_up)
+//        else
+//            loadAnimation(applicationContext, R.anim.slide_down)
+//
+//        v.startAnimation(aniSlide)
+//        v.visibility=visibility
+    }
 }
