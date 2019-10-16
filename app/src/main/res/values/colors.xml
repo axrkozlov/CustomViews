@@ -115,7 +115,7 @@
 
     <color name="bonusTextColor">@color/kaspi_base_bonus_green</color>
 
-    <color name="colorAccent">@color/kaspi_white</color>
+    <color name="colorAccent">@color/kaspi_base_orange</color>
     <color name="colorControlActivated">@color/kaspi_red_800</color>
     <color name="colorControlNormal">@color/kaspi_red</color>
     <color name="colorForeground">@color/kaspi_white</color>

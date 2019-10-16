@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         tools:context=".Main2Activity">
 
-    <com.example.customviews.CreditAmountView
+    <com.example.customviews.customview.CreditAmountView
             android:id="@+id/changeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

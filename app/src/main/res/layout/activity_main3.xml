@@ -36,7 +36,7 @@
                     app:layout_collapseMode="pin"
                     app:navigationIcon="@drawable/ic_back"
                     app:title="">
-                <com.example.customviews.AnimatedText
+                <com.example.customviews.customview.AnimatedText
                         style="@style/BlueOptionsMenuTextAppearance"
                         android:id="@+id/animtitle"
                         android:layout_width="wrap_content"
@@ -45,6 +45,7 @@
                         android:text="Получить кредит"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+
 <!--                <TextView-->
 <!--                        android:id="@+id/titleTv"-->
 <!--                        style="@style/BlueOptionsMenuTextAppearance"-->
@@ -70,7 +71,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <com.example.customviews.AnimatedText
+            <com.example.customviews.customview.AnimatedText
                     android:id="@+id/animtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,7 +88,10 @@
                     android:padding="20dp"
                     android:progressTint="@color/kaspi_blue_link" />
 
-
+            <com.example.customviews.customview.PhoneInputEditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/testRv"
                     android:layout_width="match_parent"

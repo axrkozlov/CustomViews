@@ -60,7 +60,7 @@
 <!--                app:layout_anchor="@id/mainAppbar"-->
 
 <!--                app:layout_anchorGravity="bottom|end" />-->
-    <com.example.customviews.CreditMonthView
+    <com.example.customviews.customview.CreditMonthView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"/>

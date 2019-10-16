@@ -1,9 +1,10 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.customviews.R
 import kotlinx.android.synthetic.main.credit_day_view.view.*
 
 

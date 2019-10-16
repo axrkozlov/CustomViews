@@ -1,12 +1,11 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
+import com.example.customviews.R
 import kotlinx.android.synthetic.main.credit_month_view.view.*
 
 
@@ -46,7 +45,9 @@ class CreditMonthView @JvmOverloads constructor(
             }
             else {
                 salesUnderline.visibility= View.INVISIBLE
-                TextViewCompat.setTextAppearance(salesTV, R.style.Body3Style)
+                TextViewCompat.setTextAppearance(salesTV,
+                    R.style.Body3Style
+                )
             }
         }
 

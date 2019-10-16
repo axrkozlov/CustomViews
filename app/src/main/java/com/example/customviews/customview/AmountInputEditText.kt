@@ -1,4 +1,4 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
 import androidx.appcompat.widget.AppCompatEditText
@@ -8,6 +8,8 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.text.method.DigitsKeyListener
 import android.util.AttributeSet
+import com.example.customviews.R
+import com.example.customviews.pretty
 import java.math.BigDecimal
 import kotlin.math.max
 import kotlin.math.min
@@ -20,7 +22,9 @@ class AmountInputEditText : AppCompatEditText {
         defStyleAttr
     )
 
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, R.attr.editTextStyle)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs,
+        R.attr.editTextStyle
+    )
 
     constructor(context: Context) : this(context, null)
 

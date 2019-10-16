@@ -1,4 +1,4 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,12 +8,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import android.graphics.PorterDuff
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.widget.TextViewCompat
-import com.google.android.material.snackbar.Snackbar
+import com.example.customviews.R
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.credit_amount_view.view.*
 import timber.log.Timber
@@ -237,7 +235,9 @@ class CreditAmountView @JvmOverloads constructor(
     private fun showError() {
         if (hasError) return
         inputLayout.boxStrokeColor =
-            ContextCompat.getColor(context, R.color.creditViewInputLayoutError)
+            ContextCompat.getColor(context,
+                R.color.creditViewInputLayoutError
+            )
         inputLayout.setHintTextAppearance(R.style.HintErrorStyle)
         Toast.makeText(
             context,
@@ -249,7 +249,9 @@ class CreditAmountView @JvmOverloads constructor(
     }
 
     private fun hideError() {
-        inputLayout.boxStrokeColor = ContextCompat.getColor(context, R.color.creditViewInputLayout)
+        inputLayout.boxStrokeColor = ContextCompat.getColor(context,
+            R.color.creditViewInputLayout
+        )
         inputLayout.setHintTextAppearance(R.style.HintStyle)
         hasError=false
 //        inputLayout.hint=context.getString(R.string.titleCreditAmount)

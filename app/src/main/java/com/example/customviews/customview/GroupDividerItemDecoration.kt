@@ -1,4 +1,4 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.customviews.R
 
 class GroupDividerItemDecoration(context: Context, orientation: Int) :
 RecyclerView.ItemDecoration() {

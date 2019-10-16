@@ -8,14 +8,12 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextWatcher
 import android.util.Log
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import android.view.animation.LinearInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import com.example.customviews.customview.CreditAmountView
+import com.example.customviews.customview.CreditMonthView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.credit_amount_view.view.*
 
 class MainActivity : AppCompatActivity() {
 

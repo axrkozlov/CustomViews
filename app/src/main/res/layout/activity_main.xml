@@ -7,7 +7,7 @@
                                                    tools:context=".MainActivity"
         android:background="#BBBBBB">
 
-    <com.example.customviews.CreditMonthView
+    <com.example.customviews.customview.CreditMonthView
             android:id="@+id/creditRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.customviews.CreditDayView
+    <com.example.customviews.customview.CreditDayView
             android:id="@+id/creditDayRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/creditRow" />
-    <com.example.customviews.CreditAmountView
+    <com.example.customviews.customview.CreditAmountView
             android:id="@+id/creditAmountET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             app:amount="1 000 000 ₸"
             app:layout_constraintTop_toBottomOf="@+id/creditDayRow"
             />
-    <com.example.customviews.AmountInputEditText
+    <com.example.customviews.customview.AmountInputEditText
             android:id="@+id/amountET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/amountET" />
 
-    <com.example.customviews.CircularProgressView
+    <com.example.customviews.customview.CircularProgressView
             android:id="@+id/cpv"
             android:layout_width="200dp"
             android:layout_height="200dp"

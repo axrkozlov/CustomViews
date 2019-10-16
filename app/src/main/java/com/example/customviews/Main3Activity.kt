@@ -9,15 +9,13 @@ import android.animation.ValueAnimator
 import android.os.Build
 
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.AlphaAnimation
 
 import com.google.android.material.appbar.AppBarLayout
 
 import android.view.animation.AnimationUtils.loadAnimation
-import android.view.animation.DecelerateInterpolator
 import android.widget.SeekBar
+import com.example.customviews.customview.AnimatedText
 
 
 class Main3Activity : AppCompatActivity() {

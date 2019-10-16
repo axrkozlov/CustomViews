@@ -1,4 +1,4 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,7 @@ import android.widget.TextView
 import android.graphics.Shader
 import androidx.core.content.ContextCompat
 import android.graphics.LinearGradient
-import android.util.Log
-import kotlin.math.pow
+import com.example.customviews.R
 
 
 class AnimatedText @JvmOverloads constructor(

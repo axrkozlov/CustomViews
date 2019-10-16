@@ -1,4 +1,4 @@
-package com.example.customviews
+package com.example.customviews.customview
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,6 +8,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.FloatRange
+import com.example.customviews.R
 
 class CircularProgressView
 @JvmOverloads constructor(
