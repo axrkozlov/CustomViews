@@ -10,9 +10,6 @@ import android.text.method.DigitsKeyListener
 import android.util.AttributeSet
 import android.util.Log
 import com.example.customviews.R
-import com.example.customviews.pretty
-import java.lang.StringBuilder
-import java.util.regex.Pattern
 import kotlin.math.max
 import kotlin.math.min
 
@@ -37,7 +34,8 @@ class PhoneInputEditText : AppCompatEditText {
     init {
         inputType = InputType.TYPE_CLASS_NUMBER
         keyListener = DigitsKeyListener.getInstance("0123456789 ().-_+")
-//        setText(StringBuilder("+7 (7__) ___-__-__"))
+        setText(StringBuilder("+7 (7__) ___-__-__"))
+
         addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(x: Editable?) {
@@ -53,16 +51,26 @@ class PhoneInputEditText : AppCompatEditText {
                     return
                 }
                 isRunning = true
-                var basePos = selectionEnd
+                if (x != null && x.length > 0) {
+                    val basePos = selectionEnd
+                    val digitsOnly = x.filter { TextUtils.isDigitsOnly(it.toString()) }
+                    val digitCount = getDigitCountBeforeCursor(x.toString(), basePos)
 
+                    lastDigitsCount = digitsOnly.length
 
-//                val x1=x?.replace(Regex(".*\\(\\s"), "")
-//                val startPosition=min(5,x?.length?:0)
-                val x1 = x
-                Log.i("TAG", "$start - count=$count")
-                if (x1 != null && x1.length > 0) {
+                    val array = Array(11) { '_' }
 
-                    var digitsOnly = x1.filter { TextUtils.isDigitsOnly(it.toString()) }
+                    for (i in array.indices) {
+                        if (i >= digitsOnly.length) break
+                        array[i] = digitsOnly[i]
+                    }
+
+                    val finalString = String.format("+%c (%c%c%c) %c%c%c-%c%c-%c%c", *array)
+                    setText(finalString)
+
+                    var finalPos = findNewCursorPosition(finalString, digitCount)
+                    finalPos = min(length(), finalPos)
+                    this@PhoneInputEditText.setSelection(finalPos)
 //                     digitsOnly = digitsOnly.replace(Regex("^.."),"")
 //
 //                    if (isDeleting && digitsOnly.length == lastDigitsCount) {
@@ -70,15 +78,10 @@ class PhoneInputEditText : AppCompatEditText {
 //                            digitsOnly = digitsOnly.substring(1, digitsOnly.length - 1)
 //                        }
 //                    }
-                    lastDigitsCount = digitsOnly.length
-
-                    val array = Array(11) { '_' }
-                    val digitsList = mutableListOf<Char>('7', '7')
-
-                    var skipSymbols = 0
-                    var wrongSymbols = mutableListOf<Char>()
-                    var isFirstSevenFounded=false
-                    var isSecondSevenFounded=false
+//                    var skipSymbols = 0
+//                    var wrongSymbols = mutableListOf<Char>()
+//
+//
 //                    for ((i, v) in digitsOnly.withIndex()) {
 //
 //                        if (v != '7')
@@ -124,17 +127,25 @@ class PhoneInputEditText : AppCompatEditText {
 //                            digitsList.add(d)
 //                        } else break
 //                    }
-                    for ((i, v) in array.withIndex()) {
-                        if (i >= digitsList.size) break
-                        val s = digitsList[i]
+//                    var added:Char?=null
+//                    val digitsList = mutableListOf<Char>()
+//                    for ((i, v) in digitsOnly.withIndex()) {
+//                        if (i >= digitsOnly.length) break
+//                        val d = digitsOnly[i]
+//
+//
+//                        if (i<2 && d!='7') {
+//                            added=v
+//                            continue
+//                        }
+//                            digitsList.add(v)
+//
+//                    }
+//                    added?.let { digitsList.add(2,added) }
+//                    Log.i("TAG", "$digitsList")
 
-                        array[i] = s
-
-                    }
 //                    Log.i("TAG", "$digitsOnly")
 
-                    val finalString = String.format("+%c (%c%c%c) %c%c%c-%c%c-%c%c", *array)
-//                    setText(finalString)
 //                    x.replace(0, x.length, )
 
 //                    val finalString = x.replace(0, x.length, "+_ (___) ___-__-__ ")
@@ -160,12 +171,9 @@ class PhoneInputEditText : AppCompatEditText {
 //                    if (digitsOnly.length == 0) {
 //                        lastDigitsCount = 1
 //                    }
-                    var digitCount = digitsOnly.length
-                    val newFinalSize = finalString.length
-                    var finalPos = findNewCursorPosition(finalString.toString(), digitCount)
-                    finalPos = min(newFinalSize, finalPos)
-                    finalPos = max(5, finalPos)
-//                    this@PhoneInputEditText.setSelection(finalPos)
+
+//                    val newFinalSize = finalString.length
+
 
 
 //                    val cursor: Int
@@ -183,6 +191,7 @@ class PhoneInputEditText : AppCompatEditText {
         })
     }
 
+
     private fun getDigitCountBeforeCursor(string: String?, cursorPosition: Int): Int {
         if (string == null) return 0
         var digitNumber = 0
@@ -191,17 +200,15 @@ class PhoneInputEditText : AppCompatEditText {
             if (c == cursorPosition) return digitNumber
             if (s.isDigit()) {
                 digitNumber += 1
-//                if (c == 0 && s == '+') digitNumber += 1
             }
             c += 1
         }
         return digitNumber
     }
 
-
     private fun findNewCursorPosition(string: String?, digitCount: Int): Int {
         if (string == null) return 0
-        var c = 5
+        var c = 0
         var digit = 0
         for (s in string) {
             if (digit == digitCount) return c
@@ -209,9 +216,12 @@ class PhoneInputEditText : AppCompatEditText {
             if (s.isDigit()) {
                 digit += 1
             }
-
         }
         return c
     }
 
+    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
+        if (selStart == selEnd && selStart < 4) setSelection(min(4, length()))
+        super.onSelectionChanged(selStart, selEnd)
+    }
 }
