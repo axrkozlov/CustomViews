@@ -92,6 +92,8 @@
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+            <com.example.customviews.customview.AmountInputEditText android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"/>
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/testRv"
                     android:layout_width="match_parent"

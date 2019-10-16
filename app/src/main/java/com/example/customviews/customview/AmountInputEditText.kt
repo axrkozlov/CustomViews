@@ -171,4 +171,9 @@ class AmountInputEditText : AppCompatEditText {
         }
 
     }
+
+    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
+        if (selStart == selEnd && selStart > length()-2) setSelection(max(0, length()-2))
+        super.onSelectionChanged(selStart, selEnd)
+    }
 }
