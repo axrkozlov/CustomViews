@@ -11,9 +11,9 @@
 <!--            android:toYScale="0.0" />-->
 
     <translate
-            android:duration="150"
-            android:fromYDelta="20"
-            android:toYDelta="0" />
+            android:duration="250"
+            android:fromXDelta="-2"
+            android:toXDelta="0" />
 
-    <alpha android:duration="150" android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <alpha android:duration="250" android:fromAlpha="0.0" android:toAlpha="1.0" />
 </set>

@@ -57,7 +57,7 @@ class Main4Activity : AppCompatActivity() {
         val alpha = 1.0f - 3 * percentage.pow(3f)
         bigTitle.alpha = alpha
         titleTv.alpha = 2 * (percentage).pow(3)
-        titleTv.translationY = 20f - 20f * percentage
+        titleTv.translationY = 10f - 10f * percentage
         val elevation = min(percentage * 25, 5f)
 
         Log.i("TAG", "$elevation")

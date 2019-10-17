@@ -13,7 +13,6 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="wrap_content"
                 android:layout_height="104dp"
-
                 android:background="@color/white_smoke"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -36,23 +35,23 @@
                     app:layout_collapseMode="pin"
                     app:navigationIcon="@drawable/ic_back"
                     app:title="">
-                <com.example.customviews.customview.AnimatedText
-                        style="@style/BlueOptionsMenuTextAppearance"
-                        android:id="@+id/animtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Получить кредит"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-<!--                <TextView-->
-<!--                        android:id="@+id/titleTv"-->
+<!--                <com.example.customviews.customview.AnimatedText-->
 <!--                        style="@style/BlueOptionsMenuTextAppearance"-->
+<!--                        android:id="@+id/animtitle"-->
 <!--                        android:layout_width="wrap_content"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:gravity="center"-->
-<!--                        android:text="Получить кредит" />-->
+<!--                        android:text="Получить кредит"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="18sp" />-->
+
+                <TextView
+                        android:id="@+id/titleTv"
+                        style="@style/BlueOptionsMenuTextAppearance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Получить кредит" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -87,7 +86,11 @@
                     android:max="1000"
                     android:padding="20dp"
                     android:progressTint="@color/kaspi_blue_link" />
-
+            <Button
+                    android:id="@+id/nextBt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="next"/>
             <com.example.customviews.customview.PhoneInputEditText
                     android:id="@+id/phone"
                     android:layout_width="match_parent"

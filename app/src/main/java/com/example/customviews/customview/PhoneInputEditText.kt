@@ -39,14 +39,6 @@ class PhoneInputEditText : AppCompatEditText {
         addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(x: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                isDeleting = count > after
-            }
-
-            override fun onTextChanged(x: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isRunning) {
                     return
                 }
@@ -67,7 +59,7 @@ class PhoneInputEditText : AppCompatEditText {
                     }
 
                     val finalString = String.format("+%c (%c%c%c) %c%c%c-%c%c-%c%c", *array)
-                    setText(finalString)
+                    x.replace (0,length(), finalString)
 
                     var finalPos = findNewCursorPosition(finalString, digitCount)
                     finalPos = min(length(), finalPos)
@@ -187,6 +179,14 @@ class PhoneInputEditText : AppCompatEditText {
 //                    this@PhoneInputEditText.setSelection(cursor)
                 }
                 isRunning = false
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                isDeleting = count > after
+            }
+
+            override fun onTextChanged(x: CharSequence?, start: Int, before: Int, count: Int) {
+
             }
 
         })

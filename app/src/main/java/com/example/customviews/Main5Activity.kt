@@ -2,7 +2,7 @@ package com.example.customviews
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main3.*
+import kotlinx.android.synthetic.main.activity_main5.*
 import android.animation.ObjectAnimator
 import android.animation.StateListAnimator
 import android.animation.ValueAnimator
@@ -10,20 +10,23 @@ import android.content.Intent
 import android.os.Build
 
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 
 import com.google.android.material.appbar.AppBarLayout
 
 import android.view.animation.AnimationUtils.loadAnimation
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.SeekBar
 import com.example.customviews.customview.AnimatedText
 
 
-class Main3Activity : AppCompatActivity() {
+class Main5Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3)
+        setContentView(R.layout.activity_main5)
 
         val adapter=Test3Adapter()
         testRv.adapter=adapter
@@ -39,7 +42,7 @@ class Main3Activity : AppCompatActivity() {
         initialSeekBar()
 
         nextBt.setOnClickListener {
-            val i= Intent(this, Main5Activity::class.java)
+            val i= Intent(this, Main4Activity::class.java)
             startActivity(i)
         }
 
@@ -51,7 +54,7 @@ class Main3Activity : AppCompatActivity() {
 //            val stateListAnimator = StateListAnimator()
 //            stateListAnimator.addState(
 //                IntArray(0),
-//                ObjectAnimator.ofFloat(mainAppbar, "elevation", 10f)
+//                ObjectAnimator.ofFloat(mainAppbar, "elevation", 0.1f)
 //            )
 //            mainAppbar.setStateListAnimator(stateListAnimator)
 //        }
@@ -106,16 +109,16 @@ class Main3Activity : AppCompatActivity() {
 
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
             if (!mIsTheTitleVisible) {
-                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
-//                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
+//                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
+                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
                 mIsTheTitleVisible = true
             }
 
         } else if (percentage <= PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR) {
 
             if (mIsTheTitleVisible) {
-                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
-//                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
+//                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
+                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
                 mIsTheTitleVisible = false
             }
         }
@@ -159,17 +162,23 @@ class Main3Activity : AppCompatActivity() {
         v.visibility=visibility
     }
 
+    var animator:ValueAnimator?=null
+
     fun startAlpha1Animation(v: AnimatedText, duration: Long, visibility: Int) {
 
 val start=if (visibility == View.VISIBLE) 0 else 1000
         val end=if (visibility == View.INVISIBLE) 0 else 1000
-        val animator=ValueAnimator.ofInt(start,end)
-        animator.duration=800
-        animator.interpolator=AccelerateInterpolator(0.5f)
-        animator.addUpdateListener {
+        animator?.cancel()
+        animator=ValueAnimator.ofInt(start,end)
+        animator?.duration=if (visibility == View.VISIBLE) 350 else 150
+
+        val interpolator=if (visibility == View.VISIBLE) AccelerateInterpolator(1.0f) else  LinearInterpolator()
+
+        animator?.interpolator=interpolator
+        animator?.addUpdateListener {
             v.changeColor(it.animatedValue as Int)
         }
-        animator.start()
+        animator?.start()
 
 
 
