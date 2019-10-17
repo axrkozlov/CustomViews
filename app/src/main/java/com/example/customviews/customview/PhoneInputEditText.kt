@@ -63,6 +63,7 @@ class PhoneInputEditText : AppCompatEditText {
                     for (i in array.indices) {
                         if (i >= digitsOnly.length) break
                         array[i] = digitsOnly[i]
+                        if (i==0) array[i]='7'
                     }
 
                     val finalString = String.format("+%c (%c%c%c) %c%c%c-%c%c-%c%c", *array)
