@@ -108,17 +108,22 @@ class Main5Activity : AppCompatActivity() {
 
 
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
-            if (!mIsTheTitleVisible) {
+
+           if (!mIsTheTitleVisible) {
+               animtitle.visibility=View.VISIBLE
+//               animtitle.startAnimatedVisibilityChange(true,View.VISIBLE)
 //                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
                 startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
                 mIsTheTitleVisible = true
             }
 
         } else if (percentage <= PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR) {
-
             if (mIsTheTitleVisible) {
+                animtitle.visibility=View.INVISIBLE
+//                animtitle.startAnimatedVisibilityChange(false,View.INVISIBLE)
+//
 //                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
-                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
+//                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)
                 mIsTheTitleVisible = false
             }
         }
