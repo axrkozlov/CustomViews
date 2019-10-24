@@ -1,5 +1,7 @@
 package com.example.customviews.customview
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.TimeInterpolator
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,10 +10,11 @@ import android.widget.TextView
 import android.graphics.Shader
 import androidx.core.content.ContextCompat
 import android.graphics.LinearGradient
-import android.view.View
+import android.util.Log
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
 import com.example.customviews.R
+import kotlin.math.min
 
 
 class AnimatedText @JvmOverloads constructor(
@@ -19,51 +22,64 @@ class AnimatedText @JvmOverloads constructor(
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : TextView(context, attributeSet, defStyleAttr) {
+
     var animator: ValueAnimator? = null
-    private var oldvisibility = 0
+    var newVisibility = VISIBLE
+    var startProcess = -1
+    fun switchAnimatedVisibility(visibility: Int) {
+        if (visibility == newVisibility) return
+        newVisibility = visibility
 
-//    override fun setVisibility(visibility: Int) {
-//        if (oldvisibility==visibility) return
-//        startAnimatedVisibilityChange(visibility == View.VISIBLE,visibility)
-//       super.setVisibility(visibility)
-//        oldvisibility=visibility
-//    }
+        if (startProcess < 0) startProcess = if (visibility == VISIBLE) 0 else 100
+        val endProgress = if (visibility == INVISIBLE) 0 else 100
 
-
-    fun startAnimatedVisibilityChange(isShown: Boolean,visibility: Int) {
-
-        val start = if (isShown) 0 else 100
-        val end = if (!isShown) 0 else 100
-
-        val interpolator: TimeInterpolator = if (!isShown)
-            AccelerateInterpolator(1.0f)
+        val interpolator: TimeInterpolator = if (visibility == VISIBLE)
+            AccelerateInterpolator(0.5f)
         else LinearInterpolator()
 
+        animator?.removeAllListeners()
         animator?.cancel()
-        animator = ValueAnimator.ofInt(start, end)
-        animator?.duration = if (!isShown) 350 else 150
+        animator = ValueAnimator.ofInt(startProcess, endProgress)
 
-
+        animator?.duration = if (visibility == VISIBLE) 250 else 100
         animator?.interpolator = interpolator
-        animator?.addUpdateListener {
-            val value=it.animatedValue as Int
-            changeColor(value)
-//            if (value==100)     this.visibility=visibility
-        }
+
+
+
+        animator?.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(animation: Animator?) {}
+
+            override fun onAnimationEnd(animation: Animator?) {
+                this@AnimatedText.visibility = visibility
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {}
+
+            override fun onAnimationStart(animation: Animator?) {
+                if (visibility == VISIBLE) this@AnimatedText.visibility = visibility
+            }
+        })
+
         animator?.start()
+        animator?.addUpdateListener {
+            val value = it.animatedValue as Int
+            startProcess = value
+            changeColor(value)
+        }
 
     }
+    var gradient:LinearGradient? =null
 
-    fun changeColor(progress: Int) {
+     fun changeColor(progress: Int) {
+        paint.shader = gradient
         val pf = progress.toFloat() / 100
-        val animWidth = 50
+        val animWidth = 40
         val k0 = -animWidth * (1 - pf)
         val k1 = animWidth * (pf)
         val x0 = pf * width + k0
         val x1 = pf * width + k1
-
-        val gradient = LinearGradient(
-            x0, 0f, x1, 20f,
+        gradient= LinearGradient(
+            x0, 10f, x1, 0f,
             intArrayOf(
                 ContextCompat.getColor(context, R.color.colorStart),
                 ContextCompat.getColor(context, R.color.colorEnd)

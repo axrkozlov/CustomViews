@@ -29,6 +29,7 @@ class Main4Activity : AppCompatActivity() {
             items.add(i)
         }
         adapter.updateItems(items)
+        
 //        mainAppbar.setLiftable(false)
 //
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -68,6 +69,7 @@ class Main4Activity : AppCompatActivity() {
 
 
         mainAppbar.translationZ = 8f * percentage.pow(20f)
+
     }
     //without line
 //    private fun handleToolbarTitleVisibility(percentage: Float) {

@@ -3,23 +3,29 @@ package com.example.customviews
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main5.*
-import android.animation.ObjectAnimator
-import android.animation.StateListAnimator
 import android.animation.ValueAnimator
 import android.content.Intent
-import android.os.Build
+import android.provider.Settings
+import android.util.Log
 
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 
 import com.google.android.material.appbar.AppBarLayout
 
 import android.view.animation.AnimationUtils.loadAnimation
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.SeekBar
 import com.example.customviews.customview.AnimatedText
+import android.os.Build
+import android.content.ContentResolver
+import android.database.Cursor
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 class Main5Activity : AppCompatActivity() {
@@ -46,8 +52,6 @@ class Main5Activity : AppCompatActivity() {
             startActivity(i)
         }
 
-
-
 //        mainAppbar.bringToFront()
 //        mainAppbar.elevation=0.1f
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -59,16 +63,16 @@ class Main5Activity : AppCompatActivity() {
 //            mainAppbar.setStateListAnimator(stateListAnimator)
 //        }
 
-        mainAppbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, offset ->
-            val maxScroll = appBarLayout.getTotalScrollRange()
-            val percentage = Math.abs(offset).toFloat() / maxScroll.toFloat()
-            if (percentage >= 0.01) {
-                toolbar.elevation=10f
-            } else toolbar.elevation=0f
-//            handleAlphaOnTitle(percentage)
-            handleToolbarTitleVisibility(percentage)
-
-        })
+//        mainAppbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, offset ->
+//            val maxScroll = appBarLayout.getTotalScrollRange()
+//            val percentage = Math.abs(offset).toFloat() / maxScroll.toFloat()
+//            if (percentage >= 0.01) {
+//                toolbar.elevation=10f
+//            } else toolbar.elevation=0f
+////            handleAlphaOnTitle(percentage)
+//            handleToolbarTitleVisibility(percentage)
+//
+//        })
 
 //        mainAppbar.setLifted(false)
 //        mainAppbar.setLiftOnScroll(true)
@@ -107,19 +111,22 @@ class Main5Activity : AppCompatActivity() {
     private fun handleToolbarTitleVisibility(percentage: Float) {
 
 
-        if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
-
+        if (percentage > PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
+            animtitle.switchAnimatedVisibility(View.VISIBLE)
            if (!mIsTheTitleVisible) {
-               animtitle.visibility=View.VISIBLE
+
+//               animtitle.visibility=View.VISIBLE
 //               animtitle.startAnimatedVisibilityChange(true,View.VISIBLE)
 //                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
-                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
+//                startAlpha1Animation(animtitle, ALPHA_ANIMATIONS_DURATION.toLong(), View.VISIBLE)
                 mIsTheTitleVisible = true
             }
 
-        } else if (percentage <= PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR) {
+        } else if (percentage < PERCENTAGE_TO_HIDE_TITLE_AT_TOOLBAR) {
+            animtitle.switchAnimatedVisibility(View.INVISIBLE)
             if (mIsTheTitleVisible) {
-                animtitle.visibility=View.INVISIBLE
+
+//                animtitle.visibility=View.INVISIBLE
 //                animtitle.startAnimatedVisibilityChange(false,View.INVISIBLE)
 //
 //                startAlphaAnimation(titleTv, ALPHA_ANIMATIONS_DURATION.toLong(), View.INVISIBLE)

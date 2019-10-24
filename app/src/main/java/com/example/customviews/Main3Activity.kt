@@ -38,9 +38,13 @@ class Main3Activity : AppCompatActivity() {
 
         initialSeekBar()
 
+        val navigate=Call{val i= Intent(this, Main5Activity::class.java)
+            startActivity(i)}
+
         nextBt.setOnClickListener {
-            val i= Intent(this, Main5Activity::class.java)
-            startActivity(i)
+            navigate.once()
+//            val i= Intent(this, Main5Activity::class.java)
+//            startActivity(i)
         }
 
 
@@ -91,6 +95,15 @@ class Main3Activity : AppCompatActivity() {
     fun changeTextColor(progress:Int){
         val p=progress
         animtext.changeColor(progress)
+    }
+
+    class Call(private val callback: (() -> Unit)?){
+        var calledOnce=false
+        fun once(){
+            if (calledOnce) return
+            callback?.invoke()
+            calledOnce=true
+        }
     }
 
 

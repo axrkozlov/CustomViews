@@ -36,6 +36,9 @@
         <attr name="progressStrokeWidth" format="dimension"/>
         <attr name="roundedEnds" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="RollAppBarLayout">
+        <attr name="toolbar_elevation" format="dimension"/>
 
+    </declare-styleable>
 
 </resources>

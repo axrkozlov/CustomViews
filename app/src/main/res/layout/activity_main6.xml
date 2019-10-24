@@ -4,66 +4,70 @@
         android:id="@+id/coordinatorLayoutRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    <com.example.customviews.customview.RollAppBarLayout
-            android:id="@+id/mainAppbar"
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:toolbar_elevation="4dp">
+            android:layout_height="104dp"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Light">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="104dp"
+                android:layout_height="match_parent"
                 app:collapsedTitleTextAppearance="@style/Headline6Style"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <TextView
-                    style="@style/Headline5Style"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="62dp"
-                    android:text="Получить кредит" />
+                app:contentScrim="@color/white"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleMarginBottom="18dp"
+                app:expandedTitleMarginStart="16dp"
+                app:expandedTitleTextAppearance="@style/Headline5Style"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:title="Получить кредит">
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:layout_marginBottom="1dp"
-                    android:background="@color/white"
-                    android:theme="@style/AuthTheme.BlueOptionsMenuTheme"
                     app:layout_collapseMode="pin"
-                    app:navigationIcon="@drawable/ic_back">
-
-                <com.example.customviews.customview.AnimatedText
-                        style="@style/BlueOptionsMenuTextAppearance"
-                        android:id="@+id/animtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Получить кредит"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-<!--                <TextView-->
-<!--                        android:id="@+id/titleTv"-->
-<!--                        style="@style/BlueOptionsMenuTextAppearance"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:gravity="center"-->
-<!--                        android:text="Получить кредит" />-->
-            </androidx.appcompat.widget.Toolbar>
+                    app:navigationIcon="@drawable/ic_back"
+                    app:title="Получить кредит"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:id="@+id/mainAppbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="104dp"-->
+<!--                android:background="@color/white_smoke"-->
+<!--                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"-->
+<!--                app:title="Получить кредит">-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="?attr/actionBarSize"-->
+<!--                    android:layout_marginBottom="1dp"-->
+<!--                    android:background="@color/white_smoke"-->
+<!--                    android:theme="@style/AuthTheme.BlueOptionsMenuTheme"-->
+<!--                    app:layout_collapseMode="pin"-->
+<!--                    app:navigationIcon="@drawable/ic_back"-->
+<!--                    app:title="Получить кредит">-->
 
 
-    </com.example.customviews.customview.RollAppBarLayout>
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
 
     <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout

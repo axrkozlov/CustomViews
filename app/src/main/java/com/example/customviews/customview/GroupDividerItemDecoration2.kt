@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.customviews.R
 import kotlin.math.roundToInt
 
-class GroupDividerItemDecoration(context: Context, orientation: Int) :
+class GroupDividerItemDecoration2(context: Context, orientation: Int) :
 RecyclerView.ItemDecoration() {
     val HORIZONTAL = LinearLayout.HORIZONTAL
     val VERTICAL = LinearLayout.VERTICAL
@@ -19,16 +19,19 @@ RecyclerView.ItemDecoration() {
     private val TAG = "GroupDividerItem"
     private val ATTRS = intArrayOf(android.R.attr.listDivider)
 
-    private var mDivider: Drawable? = null
+    private var mEndDivider: Drawable? = null
+    private var mStartDivider: Drawable? = null
 
     private var mOrientation: Int = 0
 
     private val mBounds = Rect()
 
+
+
     init {
         val a = context.obtainStyledAttributes(ATTRS)
-        mDivider = a.getDrawable(0)
-        if (mDivider == null) {
+        mEndDivider = a.getDrawable(0)
+        if (mEndDivider == null) {
             Log.w(
                 TAG,
                 "@android:attr/listDivider was not set in the theme used for this " + "DividerItemDecoration. Please set that attribute all call setBottomDivider()"
@@ -43,13 +46,17 @@ RecyclerView.ItemDecoration() {
         mOrientation = orientation
     }
 
-    fun setDrawable(drawable: Drawable) {
-        mDivider = drawable
+    fun setBottomDivider(drawable: Drawable) {
+        mEndDivider = drawable
+    }
+
+    fun setTopDivider(drawable: Drawable) {
+        mStartDivider = drawable
     }
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
 
-        if (parent.layoutManager == null || mDivider == null) {
+        if (parent.layoutManager == null || mEndDivider == null) {
             return
         }
         if (mOrientation == VERTICAL) {
@@ -81,10 +88,17 @@ RecyclerView.ItemDecoration() {
             val child = parent.getChildAt(i)
             if (!child.hasDivider()) continue
             parent.getDecoratedBoundsWithMargins(child, mBounds)
-            val bottom = mBounds.bottom + child.translationY.roundToInt()
-            val top = bottom - mDivider!!.intrinsicHeight
-            mDivider!!.setBounds(left, top, right, bottom)
-            mDivider!!.draw(canvas)
+
+
+            val bottomForBottom = mBounds.bottom + child.translationY.roundToInt()
+            val topForBottom = bottomForBottom - mEndDivider!!.intrinsicHeight
+            mEndDivider!!.setBounds(left, topForBottom, right, bottomForBottom)
+            mEndDivider!!.draw(canvas)
+
+            val topForTop =mBounds.top + child.translationY.roundToInt()
+            val bottomForTop=topForTop + mStartDivider!!.intrinsicHeight
+            mStartDivider!!.setBounds(left, topForTop, right, bottomForTop)
+            mStartDivider!!.draw(canvas)
         }
         canvas.restore()
     }
@@ -113,9 +127,9 @@ RecyclerView.ItemDecoration() {
             if (!child.hasDivider()) continue
             parent.layoutManager!!.getDecoratedBoundsWithMargins(child, mBounds)
             val right = mBounds.right + child.translationX.roundToInt()
-            val left = right - mDivider!!.intrinsicWidth
-            mDivider!!.setBounds(left, top, right, bottom)
-            mDivider!!.draw(canvas)
+            val left = right - mEndDivider!!.intrinsicWidth
+            mEndDivider!!.setBounds(left, top, right, bottom)
+            mEndDivider!!.draw(canvas)
         }
         canvas.restore()
     }
@@ -125,14 +139,16 @@ RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         when {
-            mDivider == null -> outRect.set(0, 0, 0, 0)
+            mEndDivider == null -> outRect.set(0, 0, 0, 0)
             !view.hasDivider() -> outRect.set(0, 0, 0, 0)
-            mOrientation == VERTICAL -> outRect.set(0, 0, 0, mDivider!!.intrinsicHeight)
-            else -> outRect.set(0, 0, mDivider!!.intrinsicWidth, 0)
+            mOrientation == VERTICAL -> outRect.set(0, mStartDivider!!.intrinsicHeight, 0, mEndDivider!!.intrinsicHeight)
+            else -> outRect.set(mStartDivider!!.intrinsicHeight, 0, mEndDivider!!.intrinsicWidth, 0)
         }
     }
 
     private fun View.hasDivider():Boolean{
         return  this.getTag(R.string.groupDividerItemDecorationTag) == true
     }
+
+
 }

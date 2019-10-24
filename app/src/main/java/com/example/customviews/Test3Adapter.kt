@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.test_item.view.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.customviews.customview.GroupDividerItemDecoration
+import com.example.customviews.customview.GroupDividerItemDecoration2
 
 
 class Test3Adapter : RecyclerView.Adapter<Test3Adapter.Test3ViewHolder>() {
@@ -40,12 +40,16 @@ class Test3Adapter : RecyclerView.Adapter<Test3Adapter.Test3ViewHolder>() {
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
+        val topDivider = ContextCompat.getDrawable(recyclerView.context, R.drawable.topdivider)
         val footerDivider = ContextCompat.getDrawable(recyclerView.context, R.drawable.divider)
-        val itemDecoration = GroupDividerItemDecoration(
+        val itemDecoration = GroupDividerItemDecoration2(
             recyclerView.context,
             LinearLayoutManager.VERTICAL
         )
-        itemDecoration.setDrawable(footerDivider!!)
+        itemDecoration.setTopDivider(topDivider!!)
+        itemDecoration.setBottomDivider(footerDivider!!)
+
+
         recyclerView.addItemDecoration(itemDecoration)
 
 
